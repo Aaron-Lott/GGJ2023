@@ -9,6 +9,7 @@ using TMPro;
 public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private StoryCard storyCard;
+
     private Vector2 offset;
     private bool inputDisabled;
 

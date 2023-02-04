@@ -20,9 +20,11 @@ MonoBehaviour:
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
-  familyMembersInFavour: 
-  familyMembersAgainst: 
-  positiveInfluence: 1
-  negativeInfluence: 1
+  OnYesFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
+    InfluenceAmount: 38
+  - TargetFamilyMember: {fileID: 0}
+    InfluenceAmount: 0
+  OnNoFamilyMemberInfluences: []
   onYesPacksToUnlock: []
   onNoPacksToUnlock: []

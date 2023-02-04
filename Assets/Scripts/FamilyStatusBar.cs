@@ -25,7 +25,7 @@ public class FamilyStatusBar : MonoBehaviour
             FamilyMemberPortrait portrait = Instantiate(familyMemberPortraitPrefab.gameObject, transform).GetComponent<FamilyMemberPortrait>();
 
             // Set the family member portrait type.
-            portrait.familyMemberType = familyMember.Value.Data.FamilyMemberType;
+            portrait.familyMemberType = familyMember.Value.Data;
 
             // Set family member portrait image.
             portrait.portraitImage.sprite = familyMember.Value.Data.Sprite;
@@ -64,7 +64,7 @@ public class FamilyStatusBar : MonoBehaviour
     {
         foreach (FamilyMemberPortrait portrait in familyMemberPortraits)
         {
-            if (portrait.familyMemberType == familyMember.Data.FamilyMemberType)
+            if (portrait.familyMemberType == familyMember.Data)
             {
                 portrait.happinessImage.fillAmount = ((float)familyMember.Happiness / (float)familyMember.Data.HappinessMax);
             }
