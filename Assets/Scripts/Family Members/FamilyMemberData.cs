@@ -6,7 +6,11 @@ using UnityEngine;
 public class FamilyMemberData : ScriptableObject
 {
     public string FamilyMemberName;
+    public string FamilyMemberRelation;
     public Sprite Sprite;
+    public Sprite secretSprite;
+    public string secret;
+    public bool hasSecret;
 
     public int TrustMax = 100;
 }

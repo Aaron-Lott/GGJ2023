@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Uncle
   m_EditorClassIdentifier: 
   FamilyMemberType: 4
+  hasSecret: 1
   FamilyMemberName: Dylan
   Sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
+  secretSprite: {fileID: 21300000, guid: 40f8ecd1b27d34a80813bf14c543baba, type: 3}
+  secret: Uncle Joe has a secret collection of toy trains that he won't let anyone
+    else touch.
   HappinessMax: 100
