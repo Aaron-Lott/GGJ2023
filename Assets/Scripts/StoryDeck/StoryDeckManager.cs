@@ -7,8 +7,7 @@ public class StoryDeckManager : MonoBehaviour
     [SerializeField] private StoryDeckDatabase storyDeckDatabase;
 
     [Header("Card Instantiation")]
-    [SerializeField] private StoryCard cardPrefab;
-    [SerializeField] private Transform cardSpawnPoint;
+    [SerializeField] private StoryCard storyCard;
 
     #region singleton
     public static StoryDeckManager Instance { get => instance; }
@@ -67,19 +66,17 @@ public class StoryDeckManager : MonoBehaviour
         }
     }
 
-    public StoryCard GenerateNewCard()
+    public void GenerateNewCard()
     {
         if (currentDeck.Count <= 0)
         {
-            return null;
+            return;
         }
 
-        StoryCard newCard = Instantiate(cardPrefab, cardSpawnPoint);
-
         int randomCardIndex = Random.Range(0, currentDeck.Count);
-        newCard.SetupCard(currentDeck[randomCardIndex]);
-        currentDeck.Remove(currentDeck[randomCardIndex]);
 
-        return newCard;
+        storyCard.SetupCard(currentDeck[randomCardIndex]);
+        
+        currentDeck.Remove(currentDeck[randomCardIndex]);
     }
 }

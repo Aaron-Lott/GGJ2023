@@ -7,19 +7,25 @@ using TMPro;
 
 public class StoryCard : MonoBehaviour
 {
-    public RectTransform cardImageTransform;
-    public Rigidbody2D cardImageRigidbody2D;
-    public Image cardImage;
+    [Header("Statics")]
+    [SerializeField] private RectTransform storyCardFlingablePrefab;
+    [SerializeField] private RectTransform storyCardFlingableSpawnPoint;
 
+    [Header("Fields")]
+    public TMP_Text descriptionText;
     public Image backgroundImage;
     public TMP_Text yesText;
     public TMP_Text noText;
-    public TMP_Text storyText;
 
-    public UnityEvent OnYesChosen;
-    public UnityEvent OnNoChosen;
+    [HideInInspector] public UnityEvent OnYesChosen;
+    [HideInInspector] public UnityEvent OnNoChosen;
 
     public StoryCardData Data { get; private set; }
+
+    private RectTransform currentFlingable;
+    private RectTransform previousFlingable;
+    private Rigidbody2D currentFlingableImageRigidbody2D;
+    private Image currentFlingableImage;
 
     private void OnEnable()
     {
@@ -36,11 +42,22 @@ public class StoryCard : MonoBehaviour
     public void SetupCard(StoryCardData storyCardData)
     {
         Data = storyCardData;
-        cardImage.sprite = storyCardData.sprite;
-        backgroundImage.color = storyCardData.backgroundColour;
-        storyText.text = storyCardData.description;
-        yesText.text = storyCardData.yesText;
-        noText.text = storyCardData.noText;
+
+        backgroundImage.color = Data.backgroundColour;
+        descriptionText.text = Data.description;
+        yesText.text = Data.yesText;
+        noText.text = Data.noText;
+
+        CreateFlingable();
+    }
+
+    private void CreateFlingable()
+    {
+        previousFlingable = currentFlingable;
+
+        currentFlingable = Instantiate(storyCardFlingablePrefab, storyCardFlingableSpawnPoint);
+        currentFlingableImage.sprite = Data.sprite;
+        currentFlingableImageRigidbody2D = null; // Add here
     }
 
     private void OnYes()

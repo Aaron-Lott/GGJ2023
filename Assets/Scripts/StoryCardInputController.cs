@@ -28,19 +28,19 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
 
     private void Awake() 
     {
-        storyCard.cardImageRigidbody2D.isKinematic = true;
+        storyCard.flingableImageRigidbody2D.isKinematic = true;
     }
 
     public float imageX
     {
-        get => -storyCard.cardImageTransform.localPosition.x;
+        get => -storyCard.flingableImageTransform.localPosition.x;
         set
         {
             float minX = (transform as RectTransform).rect.xMin;
             float maxX = (transform as RectTransform).rect.xMax;
 
             float x = Mathf.Round(value.ToRange(minX, maxX));
-            storyCard.cardImageTransform.localPosition = new Vector3(x, storyCard.cardImageTransform.localPosition.y, transform.localPosition.z);
+            storyCard.flingableImageTransform.localPosition = new Vector3(x, storyCard.flingableImageTransform.localPosition.y, transform.localPosition.z);
 
             imageNormalXPosition = (x - imageStartXPosition) / maxX;
 
@@ -48,8 +48,8 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             canSubmitCard.isYes = imageNormalXPosition > 0 ? true : false;
 
             // Handle card rotation.
-            float z = ((transform.position.x - storyCard.cardImageTransform.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
-            storyCard.cardImageTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, z);
+            float z = ((transform.position.x - storyCard.flingableImageTransform.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
+            storyCard.flingableImageTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, z);
         }
     }
 
@@ -96,9 +96,9 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
         if (canSubmitCard.canSubmit)
         {
             // Apply physics.
-            storyCard.cardImageRigidbody2D.isKinematic = false;
-            storyCard.cardImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
-            storyCard.cardImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
+            storyCard.flingableImageRigidbody2D.isKinematic = false;
+            storyCard.flingableImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
+            storyCard.flingableImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
             inputDisabled = true;
 
             if (canSubmitCard.isYes)
