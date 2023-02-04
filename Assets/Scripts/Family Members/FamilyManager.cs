@@ -9,12 +9,26 @@ public class FamilyManager : MonoBehaviour
     public delegate void OnGameLoseDelegate();
     public static event OnGameLoseDelegate OnGameLose;
 
+    public FamilyManager Instance { get => instance; private set => instance = value; }
+
+    private FamilyManager instance;
+
     private Dictionary<FamilyMembers, FamilyMember> FamilyMembers = new Dictionary<FamilyMembers, FamilyMember>();
 
     private bool reportedGameLose;
 
     private void Awake()
     {
+        if (instance != this && instance != null)
+        {
+            Destroy(this);
+        }
+        else if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         reportedGameLose = false;
     }
 
@@ -24,7 +38,7 @@ public class FamilyManager : MonoBehaviour
         {
             FamilyMember newFamilyMember = new FamilyMember(familyMemberData);
 
-            FamilyMembers.Add(newFamilyMember.Info.FamilyMemberType, newFamilyMember);
+            FamilyMembers.Add(newFamilyMember.Data.FamilyMemberType, newFamilyMember);
         }
     }
 
@@ -87,7 +101,7 @@ public class FamilyManager : MonoBehaviour
         {
             foreach (var fm in FamilyMembers)
             {
-                Debug.Log(fm.Value.Info.FamilyMemberName);
+                Debug.Log(fm.Value.Data.FamilyMemberName);
             }
 
             doOnceDebugFamilyMembersCreated = false;
