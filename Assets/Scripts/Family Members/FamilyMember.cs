@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FamilyMember
 {
-    public FamilyMemberData Info { get; private set; }
+    public FamilyMemberData Data { get; private set; }
 
     public int Happiness { get; private set; }
 
     public FamilyMember (FamilyMemberData familyMemberData)
     {
-        Info = familyMemberData;
+        Data = familyMemberData;
 
         ResetHappiness();
     }
@@ -20,11 +20,11 @@ public class FamilyMember
         Happiness += changeInHappiness;
 
         if (Happiness < 0) Happiness = 0;
-        if (Happiness > Info.HappinessMax) Happiness = Info.HappinessMax;
+        if (Happiness > Data.HappinessMax) Happiness = Data.HappinessMax;
     }
 
     public void ResetHappiness()
     {
-        Happiness = Info.HappinessMax;
+        Happiness = Data.HappinessMax;
     }
 }

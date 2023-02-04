@@ -10,7 +10,7 @@ public enum FamilyMembers : int
     Daughter,
 }
 
-[CreateAssetMenu(menuName = "FamilyMemberData")]
+[CreateAssetMenu(fileName = "FamilyMemberData", menuName = "FamilyMemberData")]
 public class FamilyMemberData : ScriptableObject
 {
     public FamilyMembers FamilyMemberType;
