@@ -26,7 +26,7 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
     private const float maxRotation = 20f;
     private const float submitForce = 1600f;
 
-    private void Start() 
+    private void Awake() 
     {
         storyCard.cardImageRigidbody2D.isKinematic = true;
     }
@@ -97,7 +97,6 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
         {
             // Apply physics.
             storyCard.cardImageRigidbody2D.isKinematic = false;
-
             storyCard.cardImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
             storyCard.cardImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
             inputDisabled = true;

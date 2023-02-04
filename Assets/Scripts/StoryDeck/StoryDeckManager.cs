@@ -69,7 +69,12 @@ public class StoryDeckManager : MonoBehaviour
 
     public StoryCard GenerateNewCard()
     {
-        StoryCard newCard = Instantiate(cardPrefab, cardSpawnPoint.position, cardSpawnPoint.rotation);
+        if (currentDeck.Count <= 0)
+        {
+            return null;
+        }
+
+        StoryCard newCard = Instantiate(cardPrefab, cardSpawnPoint);
 
         int randomCardIndex = Random.Range(0, currentDeck.Count);
         newCard.SetupCard(currentDeck[randomCardIndex]);

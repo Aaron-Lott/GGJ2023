@@ -139,6 +139,13 @@ MonoBehaviour:
   backgroundImage: {fileID: 7354604755415600400}
   yesText: {fileID: 7362613002486671916}
   noText: {fileID: 4218223420715268288}
+  storyText: {fileID: 211888422222721681}
+  OnYesChosen:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNoChosen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1470404010506488075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +433,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879201975776866618}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

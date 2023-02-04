@@ -14,6 +14,7 @@ public class StoryCard : MonoBehaviour
     public Image backgroundImage;
     public TMP_Text yesText;
     public TMP_Text noText;
+    public TMP_Text storyText;
 
     public UnityEvent OnYesChosen;
     public UnityEvent OnNoChosen;
@@ -34,17 +35,23 @@ public class StoryCard : MonoBehaviour
 
     public void SetupCard(StoryCardData storyCardData)
     {
+        Data = storyCardData;
         cardImage.sprite = storyCardData.sprite;
         backgroundImage.color = storyCardData.backgroundColour;
+        storyText.text = storyCardData.description;
+        yesText.text = storyCardData.yesText;
+        noText.text = storyCardData.noText;
     }
 
     private void OnYes()
     {
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onYesPacksToUnlock);
+        StoryDeckManager.Instance.GenerateNewCard();
     }
 
     private void OnNo()
     {
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onNoPacksToUnlock);
+        StoryDeckManager.Instance.GenerateNewCard();
     }
 }
