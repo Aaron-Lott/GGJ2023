@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,12 @@ public class StoryCardData : ScriptableObject
     public bool hasCustomYesNoColours = false;
     public Color yesColour = Color.green;
     public Color noColour = Color.red;
+
+    public List<FamilyMembers> familyMembersInFavour = new List<FamilyMembers>();
+    public List<FamilyMembers> familyMembersAgainst = new List<FamilyMembers>();
+
+    [Range(1, 100)] public int positiveInfluence = 10;
+    [Range(1, 100)] public int negativeInfluence = 10;
 
     public List<StoryCardPack> onYesPacksToUnlock = new List<StoryCardPack>();
     public List<StoryCardPack> onNoPacksToUnlock = new List<StoryCardPack>();

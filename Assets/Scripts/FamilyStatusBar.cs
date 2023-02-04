@@ -6,17 +6,27 @@ using UnityEngine.UI;
 
 public class FamilyStatusBar : MonoBehaviour
 {
-    public FamilyMemberPortrait familyMemberPortrait;
+    public FamilyMemberPortrait familyMemberPortraitPrefab;
+
+    private List<FamilyMemberPortrait> familyMemberPortraits = new List<FamilyMemberPortrait>();
 
     public void Start()
+    {
+        InitialiseFamilyPortraits();
+    }
+
+    public void InitialiseFamilyPortraits()
     {
         int index = 0;
 
         foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
         {
             // Add new family member to status bar.
-            FamilyMemberPortrait portrait = Instantiate(familyMemberPortrait.gameObject, transform).GetComponent<FamilyMemberPortrait>();
-            
+            FamilyMemberPortrait portrait = Instantiate(familyMemberPortraitPrefab.gameObject, transform).GetComponent<FamilyMemberPortrait>();
+
+            // Set the family member portrait type.
+            portrait.familyMemberType = familyMember.Value.Data.FamilyMemberType;
+
             // Set family member portrait image.
             portrait.portraitImage.sprite = familyMember.Value.Data.Sprite;
 
@@ -42,8 +52,21 @@ public class FamilyStatusBar : MonoBehaviour
             portrait.happinessImage.color = happinessColor;
 
             portrait.labelText.text = familyMember.Value.Data.FamilyMemberName;
-    
+
+            familyMemberPortraits.Add(portrait);
+
             index ++;
+        }
+    }
+
+    public void UpdateFamilyMemberHappinesUI(FamilyMember familyMember)
+    {
+        foreach (FamilyMemberPortrait portrait in familyMemberPortraits)
+        {
+            if (portrait.familyMemberType == familyMember.Data.FamilyMemberType)
+            {
+                portrait.happinessImage.fillAmount = ((float)familyMember.Happiness / (float)familyMember.Data.HappinessMax);
+            }
         }
     }
 }

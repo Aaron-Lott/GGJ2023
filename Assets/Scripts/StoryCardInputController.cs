@@ -9,44 +9,11 @@ using TMPro;
 public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private StoryCard storyCard;
-
-    private struct CanCardSubmitInfo
-    {
-        public bool canSubmit;
-        public bool isYes;
-    }
-
     private Vector2 offset;
     private bool inputDisabled;
-    private CanCardSubmitInfo canSubmitCard;
-
-    private float imageStartXPosition;
-    private float imageNormalXPosition;
 
     private const float maxRotation = 20f;
     private const float submitForce = 1600f;
-
-    public float imageX
-    {
-        get => -storyCard.currentFlingable.localPosition.x;
-        set
-        {
-            float minX = (transform as RectTransform).rect.xMin;
-            float maxX = (transform as RectTransform).rect.xMax;
-
-            float x = Mathf.Round(value.ToRange(minX, maxX));
-            storyCard.currentFlingable.localPosition = new Vector3(x, storyCard.currentFlingable.localPosition.y, storyCard.currentFlingable.localPosition.z);
-
-            imageNormalXPosition = (x - imageStartXPosition) / maxX;
-
-            canSubmitCard.canSubmit = x <= minX || x >= maxX;
-            canSubmitCard.isYes = imageNormalXPosition > 0 ? true : false;
-
-            // Handle card rotation.
-            float z = ((transform.position.x - storyCard.currentFlingable.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
-            storyCard.currentFlingable.rotation = Quaternion.Euler(storyCard.currentFlingable.rotation.x, storyCard.currentFlingable.rotation.y, z);
-        }
-    }
 
     /// <summary>
     /// Move the card image while dragging.
@@ -59,12 +26,12 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             return;
         }
 
-        imageX = (eventData.position + offset).x;
+        storyCard.currentFlingable.X = (eventData.position + offset).x;
 
         // Update image background colour and text based of swipe status.
-        storyCard.backgroundImage.color = imageNormalXPosition > 0 ? Color.green : Color.red;
-        storyCard.yesText.gameObject.SetActive(imageNormalXPosition > 0);
-        storyCard.noText.gameObject.SetActive(imageNormalXPosition < 0);
+        storyCard.backgroundImage.color = storyCard.currentFlingable.submitInfo.isYes ? Color.green : Color.red;
+        storyCard.yesText.gameObject.SetActive(storyCard.currentFlingable.submitInfo.isYes);
+        storyCard.noText.gameObject.SetActive(!storyCard.currentFlingable.submitInfo.isYes);
     }
 
     /// <summary>
@@ -88,43 +55,19 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             return;
         }
 
-        if (canSubmitCard.canSubmit)
+        if (storyCard.currentFlingable.submitInfo.canSubmit)
         {
-            // Apply physics.
-            storyCard.currentFlingableImageRigidbody2D.isKinematic = false;
-            storyCard.currentFlingableImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
-            storyCard.currentFlingableImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
+            // Apply physics to flingable.
+            storyCard.currentFlingable.ApplyPhysics();
 
-            if (canSubmitCard.isYes)
+            if (storyCard.currentFlingable.submitInfo.isYes)
                 storyCard.OnYesChosen?.Invoke();
             else
                 storyCard.OnNoChosen?.Invoke();
         }
         else
         {
-            StartCoroutine(ReturnToInitialPosition());
+            StartCoroutine(storyCard.currentFlingable.ReturnToInitialPosition());
         }
-    }
-
-    private IEnumerator ReturnToInitialPosition()
-    {
-        inputDisabled = true;
-
-        float elapsedTime = 0;
-        float waitTime = 0.1f;
-
-        float currentXPosition = imageX;
-
-        while (elapsedTime < waitTime)
-        {
-            imageX = Mathf.Lerp(-currentXPosition, imageStartXPosition, (elapsedTime / waitTime));
-            elapsedTime += Time.deltaTime;
-        
-            yield return null;
-        }  
-
-        imageX = imageStartXPosition;
-
-        inputDisabled = false;
     }
 }

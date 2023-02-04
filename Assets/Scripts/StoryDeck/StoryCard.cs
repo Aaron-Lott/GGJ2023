@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using System.Linq;
 
 public class StoryCard : MonoBehaviour
 {
     [Header("Statics")]
-    [SerializeField] private RectTransform storyCardFlingablePrefab;
-    [SerializeField] private RectTransform storyCardFlingableSpawnPoint;
+    [SerializeField] private StoryCardFlingable storyCardFlingablePrefab;
+    [SerializeField] private FamilyStatusBar familyStatusBar;
+    [SerializeField] private Transform storyCardFlingableSpawnPosition;
 
     [Header("Fields")]
     public TMP_Text descriptionText;
@@ -22,10 +24,8 @@ public class StoryCard : MonoBehaviour
 
     public StoryCardData Data { get; private set; }
 
-    public Transform currentFlingable;
-    public Transform previousFlingable;
-    public Rigidbody2D currentFlingableImageRigidbody2D;
-    public Image currentFlingableImage;
+    [HideInInspector] public StoryCardFlingable currentFlingable;
+    [HideInInspector] public StoryCardFlingable previousFlingable;
 
     private void OnEnable()
     {
@@ -54,28 +54,57 @@ public class StoryCard : MonoBehaviour
     {
         previousFlingable = currentFlingable;
 
-        currentFlingable = Instantiate(storyCardFlingablePrefab, storyCardFlingableSpawnPoint);
-        Debug.Log(currentFlingable);
+        currentFlingable = StoryCardFlingable.Instantiate(storyCardFlingablePrefab, storyCardFlingableSpawnPosition);
+        currentFlingable.familyMemberImage.sprite = Data.sprite;
 
-        currentFlingableImage = currentFlingable.GetComponent<Image>();
-        currentFlingableImage.sprite = Data.sprite;
-        currentFlingableImageRigidbody2D = currentFlingable.GetComponent<Rigidbody2D>();
-
+        // Yield before destroying previous flingable.
         yield return new WaitForSeconds(1);
 
         if (previousFlingable)
-        Destroy(previousFlingable.gameObject);
+        {
+            Destroy(previousFlingable.gameObject);
+        }
     }
 
     private void OnYes()
     {
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onYesPacksToUnlock);
         StoryDeckManager.Instance.GenerateNewCard();
+
+        // Update family member happiness.
+        foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
+        {
+            if (Data.familyMembersInFavour.Contains(familyMember.Key))
+            {
+                familyMember.Value.InfluenceHappiness(Data.positiveInfluence);
+                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
+            }
+            else if (Data.familyMembersAgainst.Contains(familyMember.Key))
+            {
+                familyMember.Value.InfluenceHappiness(-Data.negativeInfluence);
+                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
+            }
+        }
     }
 
     private void OnNo()
     {
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onNoPacksToUnlock);
         StoryDeckManager.Instance.GenerateNewCard();
+
+        // Update family member happiness.
+        foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
+        {
+            if (Data.familyMembersInFavour.Contains(familyMember.Key))
+            {
+                familyMember.Value.InfluenceHappiness(-Data.negativeInfluence);
+                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
+            }
+            else if (Data.familyMembersAgainst.Contains(familyMember.Key))
+            {
+                familyMember.Value.InfluenceHappiness(Data.positiveInfluence);
+                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
+            }
+        }
     }
 }

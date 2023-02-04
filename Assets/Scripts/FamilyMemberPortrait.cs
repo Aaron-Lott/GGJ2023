@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class FamilyMemberPortrait : MonoBehaviour
 {
-    public Image portraitImage;
     public Image happinessImage;
+    public Image portraitImage;
     public TMP_Text labelText;
+    [HideInInspector] public FamilyMembers familyMemberType;
 }

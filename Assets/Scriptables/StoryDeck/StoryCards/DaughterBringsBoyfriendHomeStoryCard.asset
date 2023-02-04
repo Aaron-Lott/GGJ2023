@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: DaughterBringsBoyfriendHomeStoryCard
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  postiveFamilyMembers: 
+  negativeFamilyMembers: 
+  positiveInfluence: 0
+  negativeInfluence: 0
+  sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
   description: Daughter wants to bring boyfriend home
+  yesText: Yes
+  noText: No
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}

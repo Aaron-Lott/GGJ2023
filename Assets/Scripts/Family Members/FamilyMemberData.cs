@@ -8,6 +8,7 @@ public enum FamilyMembers : int
     Dad,
     Son,
     Daughter,
+    Uncle
 }
 
 [CreateAssetMenu(fileName = "FamilyMemberData", menuName = "FamilyMemberData")]

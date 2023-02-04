@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: UncleDylanWantsToStayTheNightStoryCard
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
   description: Uncle Dylan wants to stay the night
   yesText: Yes
@@ -20,6 +20,10 @@ MonoBehaviour:
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
+  familyMembersInFavour: 04000000
+  familyMembersAgainst: 0000000003000000
+  PositiveInfluence: 20
+  NegativeInfluence: 10
   onYesPacksToUnlock:
   - {fileID: 11400000, guid: e17b4cd327a5cc849b69bc1d59d5fbc4, type: 2}
   onNoPacksToUnlock: []
