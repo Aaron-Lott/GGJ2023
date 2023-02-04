@@ -11,5 +11,5 @@ public class FamilyMemberPortrait : MonoBehaviour
     public TMP_Text labelNameText;
     public TMP_Text labelTypeText;
     
-    [HideInInspector] public FamilyMembers familyMemberType;
+    [HideInInspector] public FamilyMemberData familyMemberType;
 }

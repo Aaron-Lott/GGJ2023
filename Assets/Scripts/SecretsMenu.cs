@@ -45,6 +45,7 @@ public class SecretsMenu : MonoBehaviour
         float elapsedTime = 0;
         float waitTime = 0.2f;
 
+        transform.localScale = Vector3.one;
         Vector3 currentScale = transform.localScale;
 
         while (elapsedTime < waitTime)
@@ -62,16 +63,18 @@ public class SecretsMenu : MonoBehaviour
     public void OpenPopup()
     {
         StopAllCoroutines();
+        PopulateSecrets();
+        
+        gameObject.SetActive(true);
         StartCoroutine(OpenPopupRoutine());
     }
 
     private IEnumerator OpenPopupRoutine()
     {
-        gameObject.SetActive(true);
-
         float elapsedTime = 0;
         float waitTime = 0.2f;
 
+        transform.localScale = Vector3.zero;
         Vector3 currentScale = transform.localScale;
 
         while (elapsedTime < waitTime)
