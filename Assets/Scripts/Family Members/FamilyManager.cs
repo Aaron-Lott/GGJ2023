@@ -9,11 +9,11 @@ public class FamilyManager : MonoBehaviour
     public delegate void OnGameLoseDelegate();
     public static event OnGameLoseDelegate OnGameLose;
 
-    public FamilyManager Instance { get => instance; private set => instance = value; }
+    public static FamilyManager Instance { get => instance; private set => instance = value; }
 
-    private FamilyManager instance;
+    private static FamilyManager instance;
 
-    private Dictionary<FamilyMembers, FamilyMember> FamilyMembers = new Dictionary<FamilyMembers, FamilyMember>();
+    public Dictionary<FamilyMembers, FamilyMember> FamilyMembers { get; private set; } = new Dictionary<FamilyMembers, FamilyMember>();
 
     private bool reportedGameLose;
 
@@ -30,10 +30,7 @@ public class FamilyManager : MonoBehaviour
         }
 
         reportedGameLose = false;
-    }
 
-    void Start()
-    {
         foreach (FamilyMemberData familyMemberData in familyMembersToCreate)
         {
             FamilyMember newFamilyMember = new FamilyMember(familyMemberData);
