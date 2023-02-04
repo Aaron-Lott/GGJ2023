@@ -89,11 +89,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4084925108413904119}
+  - component: {fileID: 2138594233566938594}
+  - component: {fileID: 1470404010506488075}
   - component: {fileID: 1639327056938723840}
   - component: {fileID: 7999990182983966644}
-  - component: {fileID: 1470404010506488075}
   m_Layer: 5
-  m_Name: Card
+  m_Name: StoryCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,6 +121,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2138594233566938594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147183865588264555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71753ce10921a1c46adeb140defdf771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardImageTransform: {fileID: 6279484039166816317}
+  cardImageRigidbody2D: {fileID: 8168518546070575993}
+  cardImage: {fileID: 5901171436406045246}
+  backgroundImage: {fileID: 7354604755415600400}
+  yesText: {fileID: 7362613002486671916}
+  noText: {fileID: 4218223420715268288}
+--- !u!114 &1470404010506488075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147183865588264555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad933fbc9b3e5469fb78bc9644b7ffb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyCard: {fileID: 2138594233566938594}
 --- !u!222 &1639327056938723840
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -158,23 +190,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1470404010506488075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147183865588264555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad933fbc9b3e5469fb78bc9644b7ffb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 6279484039166816317}
-  imageBackground: {fileID: 7354604755415600400}
-  imageRigidbody2D: {fileID: 8168518546070575993}
-  yesText: {fileID: 7362613002486671916}
-  noText: {fileID: 4218223420715268288}
 --- !u!1 &1257509515504627449
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +470,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2617214200152708755}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -590,7 +605,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2617214200152708755}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -725,8 +740,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7848304510407767374}
   - {fileID: 4326527264482062389}
+  - {fileID: 7848304510407767374}
   - {fileID: 6279484039166816317}
   m_Father: {fileID: 4388799710744501880}
   m_RootOrder: 1

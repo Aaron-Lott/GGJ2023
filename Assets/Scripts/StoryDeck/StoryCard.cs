@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StoryCard : MonoBehaviour
 {
-    [SerializeField] private Image image;
-    [SerializeField] private Image backgroundImage;
+    public RectTransform cardImageTransform;
+    public Rigidbody2D cardImageRigidbody2D;
+    public Image cardImage;
+
+    public Image backgroundImage;
+    public TMP_Text yesText;
+    public TMP_Text noText;
 
     public StoryCardData Data { get; private set; }
 
@@ -22,7 +28,7 @@ public class StoryCard : MonoBehaviour
 
     public void SetupCard(StoryCardData storyCardData)
     {
-        image.sprite = storyCardData.sprite;
+        cardImage.sprite = storyCardData.sprite;
         backgroundImage.color = storyCardData.backgroundColour;
     }
 }
