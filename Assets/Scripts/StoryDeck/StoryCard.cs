@@ -68,9 +68,6 @@ public class StoryCard : MonoBehaviour
 
     private void OnYes()
     {
-        StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onYesPacksToUnlock);
-        StoryDeckManager.Instance.GenerateNewCard();
-
         // Update family member happiness.
         foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
         {
@@ -85,13 +82,13 @@ public class StoryCard : MonoBehaviour
                 familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
             }
         }
+
+        StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onYesPacksToUnlock);
+        StoryDeckManager.Instance.GenerateNewCard();
     }
 
     private void OnNo()
     {
-        StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onNoPacksToUnlock);
-        StoryDeckManager.Instance.GenerateNewCard();
-
         // Update family member happiness.
         foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
         {
@@ -106,5 +103,8 @@ public class StoryCard : MonoBehaviour
                 familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
             }
         }
+
+        StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onNoPacksToUnlock);
+        StoryDeckManager.Instance.GenerateNewCard();
     }
 }
