@@ -8,5 +8,5 @@ public class FamilyMemberData : ScriptableObject
     public string FamilyMemberName;
     public Sprite Sprite;
 
-    public int HappinessMax = 100;
+    public int TrustMax = 100;
 }

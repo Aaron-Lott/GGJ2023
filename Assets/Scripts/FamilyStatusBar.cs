@@ -31,19 +31,19 @@ public class FamilyStatusBar : MonoBehaviour
             portrait.portraitImage.sprite = familyMember.Value.Data.Sprite;
 
             // Set family member happiness.
-            portrait.happinessImage.fillAmount = ((float)familyMember.Value.Happiness / (float)familyMember.Value.Data.HappinessMax);
+            portrait.happinessImage.fillAmount = ((float)familyMember.Value.Trust / (float)familyMember.Value.Data.TrustMax);
 
             Color happinessColor;
 
-            switch (familyMember.Value.HappinessLevel)
+            switch (familyMember.Value.TrustLevel)
             {
-                case FamilyMember.HappinessLevels.Low:
+                case FamilyMember.TrustLevels.Low:
                     happinessColor = Color.red;
                     break;
-                case FamilyMember.HappinessLevels.Medium:
+                case FamilyMember.TrustLevels.Medium:
                     happinessColor = Color.yellow;
                     break;
-                case FamilyMember.HappinessLevels.High:
+                case FamilyMember.TrustLevels.High:
                 default:
                     happinessColor = Color.green;
                     break;
@@ -65,7 +65,7 @@ public class FamilyStatusBar : MonoBehaviour
         {
             if (portrait.familyMemberType == familyMember.Data)
             {
-                portrait.happinessImage.fillAmount = ((float)familyMember.Happiness / (float)familyMember.Data.HappinessMax);
+                portrait.happinessImage.fillAmount = ((float)familyMember.Trust / (float)familyMember.Data.TrustMax);
             }
         }
     }
