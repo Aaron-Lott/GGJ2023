@@ -6,30 +6,29 @@ public class FamilyManager : MonoBehaviour
 {
     [SerializeField] private List<FamilyMemberData> familyMembersToCreate;
 
-    public delegate void OnGameLoseDelegate();
-    public static event OnGameLoseDelegate OnGameLose;
-
-    public static FamilyManager Instance { get => instance; private set => instance = value; }
+    #region singleton
+    public static FamilyManager Instance { get => instance; }
 
     private static FamilyManager instance;
+    #endregion
 
     public Dictionary<FamilyMemberData, FamilyMember> FamilyMembers { get; private set; } = new Dictionary<FamilyMemberData, FamilyMember>();
 
-    private bool reportedGameLose;
+    
 
     private void Awake()
     {
+        #region singleton awake
         if (instance != this && instance != null)
         {
             Destroy(this);
         }
-        else if (instance == null)
+        else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
-
-        reportedGameLose = false;
+        DontDestroyOnLoad(gameObject);
+        #endregion
 
         BuildFamily();
     }
@@ -48,30 +47,13 @@ public class FamilyManager : MonoBehaviour
     {
         foreach (var keyValuePair in FamilyMembers)
         {
-            keyValuePair.Value.ResetHappiness();
+            keyValuePair.Value.ResetTrust();
         }
-
-        reportedGameLose = false;
     }
 
     void Update()
     {
         DebugFamilyMembersCreated();
-    }
-
-    private void CheckGameLose()
-    {
-        if (!reportedGameLose)
-        {
-            foreach (var keyValuePair in FamilyMembers)
-            {
-                if (keyValuePair.Value.Happiness == 0)
-                {
-                    OnGameLose?.Invoke();
-                    reportedGameLose = true;
-                }
-            }
-        }
     }
 
     public FamilyMember TryGetFamilyMember(FamilyMemberData familyMemberType)
@@ -80,18 +62,6 @@ public class FamilyManager : MonoBehaviour
             return FamilyMembers[familyMemberType];
         else
             return null;
-    }
-
-    public void InfluenceFamilyMember(FamilyMemberData familyMemberType, int changeInHappiness)
-    {
-        FamilyMember familyMember = TryGetFamilyMember(familyMemberType);
-
-        if (familyMember != null)
-        {
-            familyMember.InfluenceHappiness(changeInHappiness);
-        }
-
-        CheckGameLose();
     }
 
 

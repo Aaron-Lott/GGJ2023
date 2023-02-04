@@ -6,31 +6,31 @@ public class FamilyMember
 {
     public FamilyMemberData Data { get; private set; }
 
-    public int Happiness { get; private set; }
+    public int Trust { get; private set; }
 
     public bool IsSecretKnow { get; private set; }
 
-    public enum HappinessLevels : int
+    public enum TrustLevels : int
     {
         Low,
         Medium,
         High
     }
 
-    public HappinessLevels HappinessLevel 
+    public TrustLevels TrustLevel 
     { 
         get
         {
-            if (Happiness < Data.HappinessMax * 0.3f)
+            if (Trust < Data.TrustMax * 0.3f)
             {
-                return HappinessLevels.Low;
+                return TrustLevels.Low;
             }
-            else if (Happiness < Data.HappinessMax * 0.6f)
+            else if (Trust < Data.TrustMax * 0.6f)
             {
-                return HappinessLevels.Medium;
+                return TrustLevels.Medium;
             }
 
-            return HappinessLevels.High;
+            return TrustLevels.High;
         }
     }
 
@@ -38,19 +38,19 @@ public class FamilyMember
     {
         Data = familyMemberData;
 
-        ResetHappiness();
+        ResetTrust();
     }
 
-    public void InfluenceHappiness(int changeInHappiness)
+    public void InfluenceTrust(int changeInTrust)
     {
-        Happiness += changeInHappiness;
+        Trust += changeInTrust;
 
-        if (Happiness < 0) Happiness = 0;
-        if (Happiness > Data.HappinessMax) Happiness = Data.HappinessMax;
+        if (Trust < 0) Trust = 0;
+        if (Trust > Data.TrustMax) Trust = Data.TrustMax;
     }
 
-    public void ResetHappiness()
+    public void ResetTrust()
     {
-        Happiness = Data.HappinessMax / 2;
+        Trust = Data.TrustMax / 2;
     }
 }

@@ -83,10 +83,12 @@ public class StoryCard : MonoBehaviour
             {
                 if (keyValuePair.Key == info.TargetFamilyMember)
                 {
-                    keyValuePair.Value.InfluenceHappiness(info.InfluenceAmount);
+                    keyValuePair.Value.InfluenceTrust(info.InfluenceAmount);
                     familyStatusBar.UpdateFamilyMemberHappinesUI(keyValuePair.Value);
                 }
             }
         }
+
+        GameManager.Instance.CheckGameLose();
     }
 }

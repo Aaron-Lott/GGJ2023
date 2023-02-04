@@ -12,5 +12,5 @@ public class FamilyMemberData : ScriptableObject
     public string secret;
     public bool hasSecret;
 
-    public int HappinessMax = 100;
+    public int TrustMax = 100;
 }
