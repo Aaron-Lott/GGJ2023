@@ -15,7 +15,7 @@ public class StoryDeckManager : MonoBehaviour
     private static StoryDeckManager instance;
     #endregion
 
-    private List<StoryCardData> currentDeck = new List<StoryCardData>();
+    public List<StoryCardData> currentDeck { get; private set; } = new List<StoryCardData>();
 
     private void Awake()
     {

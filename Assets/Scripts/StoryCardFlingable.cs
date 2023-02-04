@@ -74,7 +74,7 @@ public class StoryCardFlingable : MonoBehaviour
     public void ApplyPhysics()
     {
         rigidbody2D.isKinematic = false;
-        rigidbody2D.AddForce(new Vector2(normalisedXPosition * submitForce, normalisedXPosition * submitForce), ForceMode2D.Impulse);
+        rigidbody2D.AddForce(new Vector2(normalisedXPosition * submitForce, Mathf.Abs(normalisedXPosition) * submitForce), ForceMode2D.Impulse);
         rigidbody2D.AddTorque(-normalisedXPosition * submitForce / 5);
     }
 }

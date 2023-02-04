@@ -12,9 +12,6 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
     private Vector2 offset;
     private bool inputDisabled;
 
-    private const float maxRotation = 20f;
-    private const float submitForce = 1600f;
-
     /// <summary>
     /// Move the card image while dragging.
     /// </summary>
