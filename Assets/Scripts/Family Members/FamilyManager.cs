@@ -13,7 +13,7 @@ public class FamilyManager : MonoBehaviour
 
     private static FamilyManager instance;
 
-    public Dictionary<FamilyMembers, FamilyMember> FamilyMembers { get; private set; } = new Dictionary<FamilyMembers, FamilyMember>();
+    public Dictionary<FamilyMemberData, FamilyMember> FamilyMembers { get; private set; } = new Dictionary<FamilyMemberData, FamilyMember>();
 
     private bool reportedGameLose;
 
@@ -31,11 +31,16 @@ public class FamilyManager : MonoBehaviour
 
         reportedGameLose = false;
 
+        BuildFamily();
+    }
+
+    private void BuildFamily()
+    {
         foreach (FamilyMemberData familyMemberData in familyMembersToCreate)
         {
             FamilyMember newFamilyMember = new FamilyMember(familyMemberData);
 
-            FamilyMembers.Add(newFamilyMember.Data.FamilyMemberType, newFamilyMember);
+            FamilyMembers.Add(newFamilyMember.Data, newFamilyMember);
         }
     }
 
@@ -69,7 +74,7 @@ public class FamilyManager : MonoBehaviour
         }
     }
 
-    public FamilyMember TryGetFamilyMember(FamilyMembers familyMemberType)
+    public FamilyMember TryGetFamilyMember(FamilyMemberData familyMemberType)
     {
         if (FamilyMembers.ContainsKey(familyMemberType))
             return FamilyMembers[familyMemberType];
@@ -77,7 +82,7 @@ public class FamilyManager : MonoBehaviour
             return null;
     }
 
-    public void InfluenceFamilyMember(FamilyMembers familyMemberType, int changeInHappiness)
+    public void InfluenceFamilyMember(FamilyMemberData familyMemberType, int changeInHappiness)
     {
         FamilyMember familyMember = TryGetFamilyMember(familyMemberType);
 

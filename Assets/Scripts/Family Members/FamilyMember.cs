@@ -8,6 +8,8 @@ public class FamilyMember
 
     public int Happiness { get; private set; }
 
+    public bool IsSecretKnow { get; private set; }
+
     public enum HappinessLevels : int
     {
         Low,

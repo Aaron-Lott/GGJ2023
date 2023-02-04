@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2302969558627715215}
+  - component: {fileID: 7918652488930661211}
   - component: {fileID: 5262610960328909480}
   - component: {fileID: 8655872008361302459}
   - component: {fileID: 6363071223473703170}
-  - component: {fileID: 7918652488930661211}
   m_Layer: 5
   m_Name: StoryCardFlingable
   m_TagString: Untagged
@@ -42,6 +42,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7918652488930661211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32354605600444492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eac2706fb4cf4cbcb98992495e29e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  familyMemberImage: {fileID: 441912275137525090}
+  familyMemberName: {fileID: 6069351297900575594}
+  rigidbody2D: {fileID: 6363071223473703170}
 --- !u!222 &5262610960328909480
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -101,21 +116,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7918652488930661211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32354605600444492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eac2706fb4cf4cbcb98992495e29e80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  familyMemberImage: {fileID: 441912275137525090}
-  familyMemberName: {fileID: 6069351297900575594}
-  rigidbody2D: {fileID: 6363071223473703170}
 --- !u!1 &5261593033262655163
 GameObject:
   m_ObjectHideFlags: 0
