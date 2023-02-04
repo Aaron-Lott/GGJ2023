@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StoryDeckDatabase", menuName = "StoryDeck/StoryDeckDatabase")]
 public class StoryDeckDatabase : ScriptableObject
 {
-    public List<StoryCardData> Database = new List<StoryCardData>();
+    public StoryCardPack BasePack;
+
+    public List<StoryCardPack> UnlockablePacks = new List<StoryCardPack>();
 }

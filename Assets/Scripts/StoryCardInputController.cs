@@ -6,19 +6,21 @@ using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using TMPro;
 
-public class CardController : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public RectTransform image;
-    public Image imageBackground;
-    public Rigidbody2D imageRigidbody2D;
-    public TMP_Text yesText;
-    public TMP_Text noText;
+    [SerializeField] private StoryCard storyCard;
+
+    private struct CanCardSubmitInfo
+    {
+        public bool canSubmit;
+        public bool isYes;
+    }
 
     private Vector2 offset;
     private bool inputDisabled;
-    private bool submitCard;
-    private float imageStartXPosition;
+    private CanCardSubmitInfo canSubmitCard;
 
+    private float imageStartXPosition;
     private float imageNormalXPosition;
 
     private const float maxRotation = 20f;
@@ -26,26 +28,28 @@ public class CardController : MonoBehaviour, IDragHandler, IPointerDownHandler, 
 
     private void Start() 
     {
-        imageRigidbody2D.isKinematic = true;
+        storyCard.cardImageRigidbody2D.isKinematic = true;
     }
 
     public float imageX
     {
-        get => -image.localPosition.x;
+        get => -storyCard.cardImageTransform.localPosition.x;
         set
         {
             float minX = (transform as RectTransform).rect.xMin;
             float maxX = (transform as RectTransform).rect.xMax;
 
             float x = Mathf.Round(value.ToRange(minX, maxX));
-            image.localPosition = new Vector3(x, image.localPosition.y, transform.localPosition.z);
+            storyCard.cardImageTransform.localPosition = new Vector3(x, storyCard.cardImageTransform.localPosition.y, transform.localPosition.z);
 
-            submitCard = x <= minX || x >= maxX;
             imageNormalXPosition = (x - imageStartXPosition) / maxX;
 
+            canSubmitCard.canSubmit = x <= minX || x >= maxX;
+            canSubmitCard.isYes = imageNormalXPosition > 0 ? true : false;
+
             // Handle card rotation.
-            float z = ((transform.position.x - image.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
-            image.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, z);
+            float z = ((transform.position.x - storyCard.cardImageTransform.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
+            storyCard.cardImageTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, z);
         }
     }
 
@@ -63,9 +67,9 @@ public class CardController : MonoBehaviour, IDragHandler, IPointerDownHandler, 
         imageX = (eventData.position + offset).x;
 
         // Update image background colour and text based of swipe status.
-        imageBackground.color = imageNormalXPosition > 0 ? Color.green : Color.red;
-        yesText.gameObject.SetActive(imageNormalXPosition > 0);
-        noText.gameObject.SetActive(imageNormalXPosition < 0);
+        storyCard.backgroundImage.color = imageNormalXPosition > 0 ? Color.green : Color.red;
+        storyCard.yesText.gameObject.SetActive(imageNormalXPosition > 0);
+        storyCard.noText.gameObject.SetActive(imageNormalXPosition < 0);
     }
 
     /// <summary>
@@ -89,14 +93,19 @@ public class CardController : MonoBehaviour, IDragHandler, IPointerDownHandler, 
             return;
         }
 
-        if (submitCard)
+        if (canSubmitCard.canSubmit)
         {
             // Apply physics.
-            imageRigidbody2D.isKinematic = false;
+            storyCard.cardImageRigidbody2D.isKinematic = false;
 
-            imageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
-            imageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
+            storyCard.cardImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
+            storyCard.cardImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
             inputDisabled = true;
+
+            if (canSubmitCard.isYes)
+                storyCard.OnYesChosen?.Invoke();
+            else
+                storyCard.OnNoChosen?.Invoke();
         }
         else
         {

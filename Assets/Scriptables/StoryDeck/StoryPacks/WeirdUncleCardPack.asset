@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67ad3cd4cc6dcb640b6375e65a4989b3, type: 3}
-  m_Name: StoryDeckDatabase
+  m_Script: {fileID: 11500000, guid: c399f22c36e3b8048b814111d9b25810, type: 3}
+  m_Name: WeirdUncleCardPack
   m_EditorClassIdentifier: 
-  BasePack: {fileID: 11400000, guid: 28f02bd7c0eabf240bc324774afefb2a, type: 2}
-  UnlockablePacks:
-  - {fileID: 11400000, guid: e17b4cd327a5cc849b69bc1d59d5fbc4, type: 2}
+  isInitiallyUnlocked: 0
+  Cards:
+  - {fileID: 11400000, guid: 27f9acc673b7a1d41a1c7a903ece6249, type: 2}
+  - {fileID: 11400000, guid: 73e7ce60a42fe3a4cbdd39719b6200e3, type: 2}

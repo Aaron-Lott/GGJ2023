@@ -2,27 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
 
 public class StoryCard : MonoBehaviour
 {
-    [SerializeField] private Image image;
-    [SerializeField] private Image backgroundImage;
+    public RectTransform cardImageTransform;
+    public Rigidbody2D cardImageRigidbody2D;
+    public Image cardImage;
+
+    public Image backgroundImage;
+    public TMP_Text yesText;
+    public TMP_Text noText;
+
+    public UnityEvent OnYesChosen;
+    public UnityEvent OnNoChosen;
 
     public StoryCardData Data { get; private set; }
 
-    void Start()
+    private void OnEnable()
     {
-        
+        OnYesChosen.AddListener(OnYes);
+        OnNoChosen.AddListener(OnNo);
     }
 
-    void Update()
+    private void OnDisable()
     {
-        
+        OnYesChosen.RemoveListener(OnYes);
+        OnNoChosen.RemoveListener(OnNo);
     }
 
     public void SetupCard(StoryCardData storyCardData)
     {
-        image.sprite = storyCardData.sprite;
+        cardImage.sprite = storyCardData.sprite;
         backgroundImage.color = storyCardData.backgroundColour;
+    }
+
+    private void OnYes()
+    {
+        StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onYesPacksToUnlock);
+    }
+
+    private void OnNo()
+    {
+        StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onNoPacksToUnlock);
     }
 }

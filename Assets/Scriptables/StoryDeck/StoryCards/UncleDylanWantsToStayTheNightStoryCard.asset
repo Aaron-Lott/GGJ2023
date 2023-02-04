@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: SonWantsCarStoryCard
+  m_Name: UncleDylanWantsToStayTheNightStoryCard
   m_EditorClassIdentifier: 
-  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  backgroundColour: {r: 0.8773585, g: 0.25244746, b: 0.25244746, a: 1}
-  description: Son wants a car!
+  sprite: {fileID: 0}
+  backgroundColour: {r: 1, g: 1, b: 1, a: 1}
+  description: Uncle Dylan wants to stay the night
+  yesText: Yes
+  noText: No
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
-  onYesPacksToUnlock: []
+  onYesPacksToUnlock:
+  - {fileID: 11400000, guid: e17b4cd327a5cc849b69bc1d59d5fbc4, type: 2}
   onNoPacksToUnlock: []
