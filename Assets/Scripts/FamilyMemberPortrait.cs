@@ -9,5 +9,6 @@ public class FamilyMemberPortrait : MonoBehaviour
     public Image happinessImage;
     public Image portraitImage;
     public TMP_Text labelText;
-    [HideInInspector] public FamilyMembers familyMemberType;
+    
+    [HideInInspector] public FamilyMemberData familyMemberType;
 }

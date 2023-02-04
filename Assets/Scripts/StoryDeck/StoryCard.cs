@@ -47,41 +47,21 @@ public class StoryCard : MonoBehaviour
         yesText.text = Data.yesText;
         noText.text = Data.noText;
 
-        StartCoroutine(CreateFlingable());
+        CreateFlingable();
     }
 
-    private IEnumerator CreateFlingable()
+    private void CreateFlingable()
     {
-        previousFlingable = currentFlingable;
+        if (currentFlingable)
+            Destroy(currentFlingable.gameObject, 1);
 
-        currentFlingable = StoryCardFlingable.Instantiate(storyCardFlingablePrefab, storyCardFlingableSpawnPosition);
+        currentFlingable = Instantiate(storyCardFlingablePrefab, storyCardFlingableSpawnPosition);
         currentFlingable.familyMemberImage.sprite = Data.sprite;
-
-        // Yield before destroying previous flingable.
-        yield return new WaitForSeconds(1);
-
-        if (previousFlingable)
-        {
-            Destroy(previousFlingable.gameObject);
-        }
     }
 
     private void OnYes()
     {
-        // Update family member happiness.
-        foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
-        {
-            if (Data.familyMembersInFavour.Contains(familyMember.Key))
-            {
-                familyMember.Value.InfluenceHappiness(Data.positiveInfluence);
-                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
-            }
-            else if (Data.familyMembersAgainst.Contains(familyMember.Key))
-            {
-                familyMember.Value.InfluenceHappiness(-Data.negativeInfluence);
-                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
-            }
-        }
+        InfluenceFamilyMembers(Data.OnYesFamilyMemberInfluences);
 
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onYesPacksToUnlock);
         StoryDeckManager.Instance.GenerateNewCard();
@@ -89,22 +69,24 @@ public class StoryCard : MonoBehaviour
 
     private void OnNo()
     {
-        // Update family member happiness.
-        foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
-        {
-            if (Data.familyMembersInFavour.Contains(familyMember.Key))
-            {
-                familyMember.Value.InfluenceHappiness(-Data.negativeInfluence);
-                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
-            }
-            else if (Data.familyMembersAgainst.Contains(familyMember.Key))
-            {
-                familyMember.Value.InfluenceHappiness(Data.positiveInfluence);
-                familyStatusBar.UpdateFamilyMemberHappinesUI(familyMember.Value);
-            }
-        }
+        InfluenceFamilyMembers(Data.OnNoFamilyMemberInfluences);
 
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.onNoPacksToUnlock);
         StoryDeckManager.Instance.GenerateNewCard();
+    }
+
+    private void InfluenceFamilyMembers(List<InfluenceFamilyMemberInfo> influenceFamilyMemberInfo)
+    {
+        foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
+        {
+            foreach (InfluenceFamilyMemberInfo info in influenceFamilyMemberInfo)
+            {
+                if (keyValuePair.Key == info.TargetFamilyMember)
+                {
+                    keyValuePair.Value.InfluenceHappiness(info.InfluenceAmount);
+                    familyStatusBar.UpdateFamilyMemberHappinesUI(keyValuePair.Value);
+                }
+            }
+        }
     }
 }
