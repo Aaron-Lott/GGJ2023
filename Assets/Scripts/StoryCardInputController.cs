@@ -10,11 +10,17 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
 {
     [SerializeField] private StoryCard storyCard;
 
+    private struct CanCardSubmitInfo
+    {
+        public bool canSubmit;
+        public bool isYes;
+    }
+
     private Vector2 offset;
     private bool inputDisabled;
-    private bool submitCard;
-    private float imageStartXPosition;
+    private CanCardSubmitInfo canSubmitCard;
 
+    private float imageStartXPosition;
     private float imageNormalXPosition;
 
     private const float maxRotation = 20f;
@@ -36,8 +42,10 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             float x = Mathf.Round(value.ToRange(minX, maxX));
             storyCard.cardImageTransform.localPosition = new Vector3(x, storyCard.cardImageTransform.localPosition.y, transform.localPosition.z);
 
-            submitCard = x <= minX || x >= maxX;
             imageNormalXPosition = (x - imageStartXPosition) / maxX;
+
+            canSubmitCard.canSubmit = x <= minX || x >= maxX;
+            canSubmitCard.isYes = imageNormalXPosition > 0 ? true : false;
 
             // Handle card rotation.
             float z = ((transform.position.x - storyCard.cardImageTransform.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
@@ -85,7 +93,7 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             return;
         }
 
-        if (submitCard)
+        if (canSubmitCard.canSubmit)
         {
             // Apply physics.
             storyCard.cardImageRigidbody2D.isKinematic = false;
@@ -93,6 +101,11 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             storyCard.cardImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
             storyCard.cardImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
             inputDisabled = true;
+
+            if (canSubmitCard.isYes)
+                storyCard.OnYesChosen?.Invoke();
+            else
+                storyCard.OnNoChosen?.Invoke();
         }
         else
         {

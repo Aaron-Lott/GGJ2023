@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c399f22c36e3b8048b814111d9b25810, type: 3}
+  m_Name: BasePack
+  m_EditorClassIdentifier: 
+  isInitiallyUnlocked: 1
+  Cards:
+  - {fileID: 11400000, guid: 9f4f5403db9b2204099bcb0bd48194bc, type: 2}
+  - {fileID: 11400000, guid: 9278af3375edd6743b262fff63508860, type: 2}
+  - {fileID: 11400000, guid: 37221ab373c30c345a2401f515d1c7da, type: 2}
