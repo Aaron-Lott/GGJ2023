@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Dad
   m_EditorClassIdentifier: 
   FamilyMemberType: 1
+  hasSecret: 1
   FamilyMemberName: Barry
-  Sprite: {fileID: 21300000, guid: b76446236559e4a7ebfbdc6519fa9d07, type: 3}
+  Sprite: {fileID: 21300000, guid: 7135d585f82ae408d8713917af908381, type: 3}
+  secretSprite: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}
+  secret: Barry (Dad) is convinced he is a superhero.
   HappinessMax: 100

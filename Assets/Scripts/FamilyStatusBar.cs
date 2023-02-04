@@ -51,7 +51,8 @@ public class FamilyStatusBar : MonoBehaviour
 
             portrait.happinessImage.color = happinessColor;
 
-            portrait.labelText.text = familyMember.Value.Data.FamilyMemberName;
+            portrait.labelNameText.text = familyMember.Value.Data.FamilyMemberName;
+            portrait.labelTypeText.text = "(" + familyMember.Value.Data.FamilyMemberRelation + ")";
 
             familyMemberPortraits.Add(portrait);
 
