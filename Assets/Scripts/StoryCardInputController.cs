@@ -26,21 +26,16 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
     private const float maxRotation = 20f;
     private const float submitForce = 1600f;
 
-    private void Awake() 
-    {
-        storyCard.flingableImageRigidbody2D.isKinematic = true;
-    }
-
     public float imageX
     {
-        get => -storyCard.flingableImageTransform.localPosition.x;
+        get => -storyCard.currentFlingable.localPosition.x;
         set
         {
             float minX = (transform as RectTransform).rect.xMin;
             float maxX = (transform as RectTransform).rect.xMax;
 
             float x = Mathf.Round(value.ToRange(minX, maxX));
-            storyCard.flingableImageTransform.localPosition = new Vector3(x, storyCard.flingableImageTransform.localPosition.y, transform.localPosition.z);
+            storyCard.currentFlingable.localPosition = new Vector3(x, storyCard.currentFlingable.localPosition.y, storyCard.currentFlingable.localPosition.z);
 
             imageNormalXPosition = (x - imageStartXPosition) / maxX;
 
@@ -48,8 +43,8 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
             canSubmitCard.isYes = imageNormalXPosition > 0 ? true : false;
 
             // Handle card rotation.
-            float z = ((transform.position.x - storyCard.flingableImageTransform.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
-            storyCard.flingableImageTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, z);
+            float z = ((transform.position.x - storyCard.currentFlingable.transform.position.x) / maxRotation).ToRange(-maxRotation, maxRotation);
+            storyCard.currentFlingable.rotation = Quaternion.Euler(storyCard.currentFlingable.rotation.x, storyCard.currentFlingable.rotation.y, z);
         }
     }
 
@@ -96,10 +91,9 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
         if (canSubmitCard.canSubmit)
         {
             // Apply physics.
-            storyCard.flingableImageRigidbody2D.isKinematic = false;
-            storyCard.flingableImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
-            storyCard.flingableImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
-            inputDisabled = true;
+            storyCard.currentFlingableImageRigidbody2D.isKinematic = false;
+            storyCard.currentFlingableImageRigidbody2D.AddForce(new Vector2(imageNormalXPosition * submitForce, imageNormalXPosition * submitForce), ForceMode2D.Impulse);
+            storyCard.currentFlingableImageRigidbody2D.AddTorque(-imageNormalXPosition * submitForce / 5);
 
             if (canSubmitCard.isYes)
                 storyCard.OnYesChosen?.Invoke();

@@ -22,10 +22,10 @@ public class StoryCard : MonoBehaviour
 
     public StoryCardData Data { get; private set; }
 
-    private RectTransform currentFlingable;
-    private RectTransform previousFlingable;
-    private Rigidbody2D currentFlingableImageRigidbody2D;
-    private Image currentFlingableImage;
+    public Transform currentFlingable;
+    public Transform previousFlingable;
+    public Rigidbody2D currentFlingableImageRigidbody2D;
+    public Image currentFlingableImage;
 
     private void OnEnable()
     {
@@ -42,22 +42,29 @@ public class StoryCard : MonoBehaviour
     public void SetupCard(StoryCardData storyCardData)
     {
         Data = storyCardData;
-
         backgroundImage.color = Data.backgroundColour;
         descriptionText.text = Data.description;
         yesText.text = Data.yesText;
         noText.text = Data.noText;
 
-        CreateFlingable();
+        StartCoroutine(CreateFlingable());
     }
 
-    private void CreateFlingable()
+    private IEnumerator CreateFlingable()
     {
         previousFlingable = currentFlingable;
 
         currentFlingable = Instantiate(storyCardFlingablePrefab, storyCardFlingableSpawnPoint);
+        Debug.Log(currentFlingable);
+
+        currentFlingableImage = currentFlingable.GetComponent<Image>();
         currentFlingableImage.sprite = Data.sprite;
-        currentFlingableImageRigidbody2D = null; // Add here
+        currentFlingableImageRigidbody2D = currentFlingable.GetComponent<Rigidbody2D>();
+
+        yield return new WaitForSeconds(1);
+
+        if (previousFlingable)
+        Destroy(previousFlingable.gameObject);
     }
 
     private void OnYes()

@@ -133,19 +133,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71753ce10921a1c46adeb140defdf771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardImageTransform: {fileID: 0}
-  cardImageRigidbody2D: {fileID: 0}
-  cardImage: {fileID: 0}
+  storyCardFlingablePrefab: {fileID: 6702600071462161633, guid: 47b666b05268ce34ba5fb05ea8c15638, type: 3}
+  storyCardFlingableSpawnPoint: {fileID: 2617214200152708755}
+  descriptionText: {fileID: 211888422222721681}
   backgroundImage: {fileID: 7354604755415600400}
   yesText: {fileID: 7362613002486671916}
   noText: {fileID: 4218223420715268288}
-  storyText: {fileID: 211888422222721681}
   OnYesChosen:
     m_PersistentCalls:
       m_Calls: []
   OnNoChosen:
     m_PersistentCalls:
       m_Calls: []
+  currentFlingable: {fileID: 0}
+  previousFlingable: {fileID: 0}
+  currentFlingableImageRigidbody2D: {fileID: 0}
+  currentFlingableImage: {fileID: 0}
 --- !u!114 &1470404010506488075
 MonoBehaviour:
   m_ObjectHideFlags: 0
