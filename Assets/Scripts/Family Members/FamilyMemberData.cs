@@ -6,8 +6,12 @@ public enum FamilyMembers : int
 {
     Mum,
     Dad,
-    Son,
-    Daughter,
+    Brother,
+    Sister,
+    Dog,
+    Cat,
+    Grandad,
+
     Uncle
 }
 
@@ -15,9 +19,12 @@ public enum FamilyMembers : int
 public class FamilyMemberData : ScriptableObject
 {
     public FamilyMembers FamilyMemberType;
-
+    
+    public bool hasSecret;
     public string FamilyMemberName;
     public Sprite Sprite;
+    public Sprite secretSprite;
+    public string secret;
 
     public int HappinessMax = 100;
 }
