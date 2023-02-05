@@ -20,10 +20,10 @@ MonoBehaviour:
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
-  familyMembersInFavour: 04000000
-  familyMembersAgainst: 0000000003000000
-  PositiveInfluence: 20
-  NegativeInfluence: 10
-  onYesPacksToUnlock:
+  OnYesFamilyMemberInfluences: []
+  OnNoFamilyMemberInfluences: []
+  OnYesPacksToUnlock:
   - {fileID: 11400000, guid: e17b4cd327a5cc849b69bc1d59d5fbc4, type: 2}
-  onNoPacksToUnlock: []
+  OnNoPacksToUnlock: []
+  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
+  OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}
