@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fb11eaf09c6854b8a85de3fdfd482a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  familyMembersToCreate:
+  buildFamily: 0
+  allFamilyMembers:
+  - {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+  - {fileID: 11400000, guid: 3e1f049678e8a40d19bb51500a93ad94, type: 2}
   - {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
   - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
   - {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}

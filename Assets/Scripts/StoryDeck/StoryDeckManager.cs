@@ -28,7 +28,6 @@ public class StoryDeckManager : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(gameObject);
         #endregion
 
         ResetDeck();

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FamilyManager : MonoBehaviour
 {
-    [SerializeField] private List<FamilyMemberData> allFamilyMembers;
+    [SerializeField] private bool buildFamily;
+    public List<FamilyMemberData> allFamilyMembers;
 
     #region singleton
     public static FamilyManager Instance { get => instance; }
@@ -13,6 +14,7 @@ public class FamilyManager : MonoBehaviour
     #endregion
 
     public Dictionary<FamilyMemberData, FamilyMember> FamilyMembers { get; private set; } = new Dictionary<FamilyMemberData, FamilyMember>();
+    public Dictionary<FamilyMemberData, FamilyMember> AllFamilyMembers { get; private set; } = new Dictionary<FamilyMemberData, FamilyMember>();
 
     public const int familyMemberAmount = 4;
 
@@ -28,10 +30,11 @@ public class FamilyManager : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(gameObject);
         #endregion
-
-        BuildFamily();
+        
+        PopulateAllFamily();
+        
+        if (buildFamily) BuildFamily();
     }
 
     private void BuildFamily()
@@ -48,11 +51,23 @@ public class FamilyManager : MonoBehaviour
             familyMembers.RemoveAt(index);
         }
 
+        // Build active family.
         foreach (FamilyMemberData familyMemberData in familyMembersToCreate)
         {
             FamilyMember newFamilyMember = new FamilyMember(familyMemberData);
 
             FamilyMembers.Add(newFamilyMember.Data, newFamilyMember);
+        }
+    }
+
+    public void PopulateAllFamily()
+    {
+        // Build all family.
+        foreach (FamilyMemberData familyMemberData in allFamilyMembers)
+        {
+            FamilyMember newFamilyMember = new FamilyMember(familyMemberData);
+
+            AllFamilyMembers.Add(newFamilyMember.Data, newFamilyMember);
         }
     }
 

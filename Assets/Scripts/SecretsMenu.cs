@@ -20,7 +20,7 @@ public class SecretsMenu : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var familyMember in FamilyManager.Instance.FamilyMembers)
+        foreach (var familyMember in FamilyManager.Instance.AllFamilyMembers)
         {
             if (!familyMember.Value.Data.hasSecret)
             {
