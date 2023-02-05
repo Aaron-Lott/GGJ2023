@@ -15,7 +15,7 @@ public class StoryDeckManager : MonoBehaviour
     private static StoryDeckManager instance;
     #endregion
 
-    public List<StoryCardData> currentDeck { get; private set; } = new List<StoryCardData>();
+    public List<StoryCardData> CurrentDeck { get; private set; } = new List<StoryCardData>();
 
     private void Awake()
     {
@@ -36,11 +36,11 @@ public class StoryDeckManager : MonoBehaviour
 
     private void ResetDeck()
     {
-        currentDeck.Clear();
+        CurrentDeck.Clear();
 
         foreach (StoryCardData cardData in storyDeckDatabase.BasePack.Cards)
         {
-            currentDeck.Add(cardData);
+            CurrentDeck.Add(cardData);
         }
 
         foreach (StoryCardPack cardPack in storyDeckDatabase.UnlockablePacks)
@@ -49,7 +49,7 @@ public class StoryDeckManager : MonoBehaviour
             {
                 foreach (StoryCardData cardData in cardPack.Cards)
                 {
-                    currentDeck.Add(cardData);
+                    CurrentDeck.Add(cardData);
                 }
             }
         }
@@ -61,22 +61,22 @@ public class StoryDeckManager : MonoBehaviour
         {
             foreach (StoryCardData cardData in cardPack.Cards)
             {
-                currentDeck.Add(cardData);
+                CurrentDeck.Add(cardData);
             }
         }
     }
 
     public void GenerateNewCard()
     {
-        if (currentDeck.Count <= 0)
+        if (CurrentDeck.Count <= 0)
         {
             return;
         }
 
-        int randomCardIndex = Random.Range(0, currentDeck.Count);
+        int randomCardIndex = Random.Range(0, CurrentDeck.Count);
 
-        storyCard.SetupCard(currentDeck[randomCardIndex]);
+        storyCard.SetupCard(CurrentDeck[randomCardIndex]);
         
-        currentDeck.Remove(currentDeck[randomCardIndex]);
+        CurrentDeck.Remove(CurrentDeck[randomCardIndex]);
     }
 }
