@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FamilyManager : MonoBehaviour
 {
-    [SerializeField] private List<FamilyMemberData> familyMembersToCreate;
+    [SerializeField] private List<FamilyMemberData> allFamilyMembers;
 
     #region singleton
     public static FamilyManager Instance { get => instance; }
@@ -14,7 +14,8 @@ public class FamilyManager : MonoBehaviour
 
     public Dictionary<FamilyMemberData, FamilyMember> FamilyMembers { get; private set; } = new Dictionary<FamilyMemberData, FamilyMember>();
 
-    
+    public const int familyMemberAmount = 4;
+
 
     private void Awake()
     {
@@ -35,6 +36,18 @@ public class FamilyManager : MonoBehaviour
 
     private void BuildFamily()
     {
+        List<FamilyMemberData> familyMembersToCreate = new List<FamilyMemberData>();
+        List<FamilyMemberData> familyMembers = new List<FamilyMemberData>();
+        familyMembers.AddRange(allFamilyMembers);
+
+        // Get random family members.
+        for (int i = 0; i < familyMemberAmount; i++)
+        {
+            int index = Random.Range(0, i);
+            familyMembersToCreate.Add(familyMembers[index]);
+            familyMembers.RemoveAt(index);
+        }
+
         foreach (FamilyMemberData familyMemberData in familyMembersToCreate)
         {
             FamilyMember newFamilyMember = new FamilyMember(familyMemberData);

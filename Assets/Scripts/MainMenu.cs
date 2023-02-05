@@ -18,29 +18,19 @@ public class MainMenu : MonoBehaviour
 
     public void StartIntroAnimation()
     {
-        introductionPanel.gameObject.SetActive(true);
+        introductionPanel.GetComponent<Animator>().SetTrigger("trigger");
 
         StartCoroutine(LoadGame());
     }
 
     private IEnumerator LoadGame()
     {
-        while (AnimatorIsPlaying())
-        {
-            yield return null;
-        }
-
+        yield return new WaitForSeconds(8);
         SceneManager.LoadScene("Game");
     }
 
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-      bool AnimatorIsPlaying()
-      {
-        return introductionPanel.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length >
-                introductionPanel.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 }
