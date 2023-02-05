@@ -7,7 +7,7 @@ public class StoryDeckManager : MonoBehaviour
     [SerializeField] private StoryDeckDatabase storyDeckDatabase;
 
     [Header("Card Instantiation")]
-    [SerializeField] private StoryCard storyCard;
+    public StoryCard storyCard;
 
     #region singleton
     public static StoryDeckManager Instance { get => instance; }
