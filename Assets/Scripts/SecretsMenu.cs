@@ -30,7 +30,7 @@ public class SecretsMenu : MonoBehaviour
             Secret secret = Instantiate(secretPrefab, grid.transform);
             secret.image.sprite = familyMember.Value.Data.secretSprite;
             secret.secretText.text = familyMember.Value.Data.secret;
-            secret.SetUnlocked(false, familyMember.Value.Data);
+            secret.SetUnlocked(familyMember.Value.IsSecretUnlocked, familyMember.Value.Data);
         }
     }
 
@@ -64,7 +64,7 @@ public class SecretsMenu : MonoBehaviour
     {
         StopAllCoroutines();
         PopulateSecrets();
-        
+
         gameObject.SetActive(true);
         StartCoroutine(OpenPopupRoutine());
     }

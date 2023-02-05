@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public delegate void OnGameLostDelegate();
     public static event OnGameLostDelegate OnGameLost;
+    public static UnityEvent OnGameWon;
 
     private bool reportedGameLose;
 
@@ -37,7 +39,26 @@ public class GameManager : MonoBehaviour
         StoryDeckManager.Instance.GenerateNewCard();
     }
 
-    public void CheckGameLose()
+    public void CheckGameState(StoryCardData lastSubmittedStoryCardData)
+    {
+        CheckGameWin(lastSubmittedStoryCardData);
+
+        CheckGameLose();
+    }
+
+    private void CheckGameWin(StoryCardData lastSubmittedStoryCardData)
+    {
+        foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
+            {
+                if (keyValuePair.Value.Trust == keyValuePair.Value.Data.TrustMax)
+                {
+                    OnGameWon?.Invoke();
+                    reportedGameLose = true;
+                }
+            }
+    }
+
+    private void CheckGameLose()
     {
         if (!reportedGameLose)
         {
@@ -52,4 +73,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    private void OnWin()
+    {
+
+    }
+    
 }

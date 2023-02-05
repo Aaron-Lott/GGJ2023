@@ -8,7 +8,17 @@ public class FamilyMember
 
     public int Trust { get; private set; }
 
-    public bool IsSecretKnow { get; private set; }
+    public bool IsSecretUnlocked
+    { 
+        get
+        {
+            return PlayerPrefs.GetInt(Data.FamilyMemberName, 0) == 1;
+        }
+        set
+        {
+            PlayerPrefs.SetInt(Data.FamilyMemberName, value ? 1 : 0);
+        } 
+    }
 
     public enum TrustLevels : int
     {

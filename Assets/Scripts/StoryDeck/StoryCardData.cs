@@ -28,4 +28,7 @@ public class StoryCardData : ScriptableObject
 
     public List<StoryCardPack> onYesPacksToUnlock = new List<StoryCardPack>();
     public List<StoryCardPack> onNoPacksToUnlock = new List<StoryCardPack>();
+
+    public FamilyMember onYesUnlockFamilyMemberSecret;
+    public FamilyMember onNoUnlockFamilyMemberSecret;
 }
