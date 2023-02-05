@@ -10,6 +10,22 @@ public struct InfluenceFamilyMemberInfo
     [Range(-100, 100)] public int InfluenceAmount;
 }
 
+[Serializable]
+public struct TrustRequirementInfo
+{
+    public enum TrustRequirementFilterType
+    {
+        GreaterThanMinimumOnly,
+        LessThanMaximumOnly,
+        WithinMinimumAndMaximum,
+    }
+
+    public FamilyMemberData TargetFamilyMember;
+    public TrustRequirementFilterType FilterType;
+    public int MinimumTrustRequirement;
+    public int MaximumTrustRequirement;
+}
+
 [CreateAssetMenu(fileName = "StoryCard", menuName = "StoryDeck/StoryCardData")]
 public class StoryCardData : ScriptableObject
 {
@@ -28,6 +44,8 @@ public class StoryCardData : ScriptableObject
 
     public List<StoryCardPack> OnYesPacksToUnlock = new List<StoryCardPack>();
     public List<StoryCardPack> OnNoPacksToUnlock = new List<StoryCardPack>();
+
+    [NonReorderable] public List<TrustRequirementInfo> CardDrawAvailabilityTrustRequirements = new List<TrustRequirementInfo>();
 
     public FamilyMemberData OnYesTargetFamilyMemberToUnlockSecret;
     public FamilyMemberData OnNoTargetFamilyMemberToUnlockSecret;
