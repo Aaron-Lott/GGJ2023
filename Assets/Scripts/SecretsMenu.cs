@@ -42,6 +42,8 @@ public class SecretsMenu : MonoBehaviour
 
     private IEnumerator ClosePopupRoutine()
     {
+        AudioManager.Instance?.ButtonClick();
+
         float elapsedTime = 0;
         float waitTime = 0.2f;
 
@@ -62,6 +64,7 @@ public class SecretsMenu : MonoBehaviour
 
     public void OpenPopup()
     {
+        AudioManager.Instance?.ButtonClick();
         StopAllCoroutines();
         PopulateSecrets();
 

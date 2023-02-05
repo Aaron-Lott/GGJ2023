@@ -60,6 +60,8 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
                 storyCard.OnYesChosen?.Invoke();
             else
                 storyCard.OnNoChosen?.Invoke();
+
+            AudioManager.Instance?.swipe?.Play();
         }
         else
         {

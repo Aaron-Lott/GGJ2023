@@ -295,6 +295,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 486140883}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &57600222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +561,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327643430}
   m_CullTransparentMesh: 0
+--- !u!114 &486140883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5498920922228205930, guid: f73eb8e2742ba4064a79245fcd158e5d, type: 3}
+  m_PrefabInstance: {fileID: 5498920922798248335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c38c5d42a4d43ca8e0a8e568ab6e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &505076111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,6 +1987,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 486140883}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 855299387252478239, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1836b0a74da224b69bfefdb5c01a83a3, type: 3}
 --- !u!224 &1993662320 stripped
@@ -2069,6 +2120,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1916959386}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: StartIntroAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 486140883}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
