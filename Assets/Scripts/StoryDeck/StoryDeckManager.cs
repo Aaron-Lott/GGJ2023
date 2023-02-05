@@ -39,7 +39,8 @@ public class StoryDeckManager : MonoBehaviour
 
         foreach (StoryCardData cardData in storyDeckDatabase.BasePack.Cards)
         {
-            CurrentDeck.Add(cardData);
+            if (cardData != null)
+                CurrentDeck.Add(cardData);
         }
 
         foreach (StoryCardPack cardPack in storyDeckDatabase.UnlockablePacks)
@@ -48,7 +49,8 @@ public class StoryDeckManager : MonoBehaviour
             {
                 foreach (StoryCardData cardData in cardPack.Cards)
                 {
-                    CurrentDeck.Add(cardData);
+                    if (cardData != null)
+                        CurrentDeck.Add(cardData);
                 }
             }
         }
@@ -60,7 +62,8 @@ public class StoryDeckManager : MonoBehaviour
         {
             foreach (StoryCardData cardData in cardPack.Cards)
             {
-                CurrentDeck.Add(cardData);
+                if (cardData != null)
+                    CurrentDeck.Add(cardData);
             }
         }
     }
@@ -75,6 +78,8 @@ public class StoryDeckManager : MonoBehaviour
         List<StoryCardData> drawableCards = new List<StoryCardData>();
         foreach (StoryCardData card in CurrentDeck)
         {
+            Debug.Log(card);
+            Debug.Log(card.CardDrawAvailabilityTrustRequirements);
             if (card.CardDrawAvailabilityTrustRequirements.Count > 0)
             {
                 bool anyTrustRequirementsNotMet = false;
