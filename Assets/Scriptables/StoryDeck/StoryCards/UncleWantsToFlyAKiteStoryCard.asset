@@ -14,18 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
-  CardDrawAvailabilityTrustRequirements: []
+  CardDrawAvailabilityTrustRequirements:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    FilterType: 0
+    MinimumTrustRequirement: 15
+    MaximumTrustRequirement: 0
   sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Uncle wants to fly a kite!
-  yesText: Yes
-  noText: No
+  description: Uncle wants to fly a kite and asks you to join him!
+  yesText: Agree to join him, grabbing your whellies
+  noText: Give him a "Kites... Seriously?..." look and say you're totally bussy with
+    something
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
-  OnYesFamilyMemberInfluences: []
-  OnNoFamilyMemberInfluences: []
-  OnYesPacksToUnlock: []
+  OnYesFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    InfluenceAmount: 15
+  OnNoFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    InfluenceAmount: -20
+  OnYesPacksToUnlock:
+  - {fileID: 11400000, guid: 5121263999ac53c4abc78f26f2f9f80a, type: 2}
   OnNoPacksToUnlock: []
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}
