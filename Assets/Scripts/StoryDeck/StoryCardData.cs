@@ -29,6 +29,9 @@ public struct TrustRequirementInfo
 [CreateAssetMenu(fileName = "StoryCard", menuName = "StoryDeck/StoryCardData")]
 public class StoryCardData : ScriptableObject
 {
+    public List<FamilyMemberData> FamilyMembersRequired = new List<FamilyMemberData>();
+    [NonReorderable] public List<TrustRequirementInfo> CardDrawAvailabilityTrustRequirements = new List<TrustRequirementInfo>();
+
     public Sprite sprite;
     public Color backgroundColour = Color.white;
     public string description = "Enter card description here";
@@ -44,8 +47,6 @@ public class StoryCardData : ScriptableObject
 
     public List<StoryCardPack> OnYesPacksToUnlock = new List<StoryCardPack>();
     public List<StoryCardPack> OnNoPacksToUnlock = new List<StoryCardPack>();
-
-    [NonReorderable] public List<TrustRequirementInfo> CardDrawAvailabilityTrustRequirements = new List<TrustRequirementInfo>();
 
     public FamilyMemberData OnYesTargetFamilyMemberToUnlockSecret;
     public FamilyMemberData OnNoTargetFamilyMemberToUnlockSecret;

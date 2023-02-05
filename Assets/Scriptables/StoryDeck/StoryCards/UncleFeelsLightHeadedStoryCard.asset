@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: UncleFeelsLightHeadedStoryCard
   m_EditorClassIdentifier: 
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+  CardDrawAvailabilityTrustRequirements:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    FilterType: 2
+    MinimumTrustRequirement: 25
+    MaximumTrustRequirement: 75
   sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
   description: Uncle feels light headed
@@ -24,10 +31,5 @@ MonoBehaviour:
   OnNoFamilyMemberInfluences: []
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
-  CardDrawAvailabilityTrustRequirements:
-  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
-    FilterType: 2
-    MinimumTrustRequirement: 25
-    MaximumTrustRequirement: 75
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

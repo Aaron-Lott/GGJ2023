@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: AuntBackwardsWalkingStoryCard
   m_EditorClassIdentifier: 
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+  CardDrawAvailabilityTrustRequirements:
+  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+    FilterType: 0
+    MinimumTrustRequirement: 60
+    MaximumTrustRequirement: 0
   sprite: {fileID: 21300000, guid: c3c72287193214996af4f29c39ba21ef, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
   description: 'Aunt Karen likes your spirit and recommends you her favourtine advice:
@@ -33,6 +40,5 @@ MonoBehaviour:
     InfluenceAmount: -10
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
-  CardDrawAvailabilityTrustRequirements: []
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

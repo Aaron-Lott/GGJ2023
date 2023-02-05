@@ -29,7 +29,10 @@ public class StoryDeckManager : MonoBehaviour
             instance = this;
         }
         #endregion
+    }
 
+    private void Start()
+    {
         ResetDeck();
     }
 
@@ -37,21 +40,13 @@ public class StoryDeckManager : MonoBehaviour
     {
         CurrentDeck.Clear();
 
-        foreach (StoryCardData cardData in storyDeckDatabase.BasePack.Cards)
-        {
-            if (cardData != null)
-                CurrentDeck.Add(cardData);
-        }
+        AddCardFromPack(storyDeckDatabase.BasePack);
 
         foreach (StoryCardPack cardPack in storyDeckDatabase.UnlockablePacks)
         {
             if (cardPack.isInitiallyUnlocked)
             {
-                foreach (StoryCardData cardData in cardPack.Cards)
-                {
-                    if (cardData != null)
-                        CurrentDeck.Add(cardData);
-                }
+                AddCardFromPack(cardPack);
             }
         }
     }
@@ -60,9 +55,25 @@ public class StoryDeckManager : MonoBehaviour
     {
         foreach (StoryCardPack cardPack in cardPacks)
         {
-            foreach (StoryCardData cardData in cardPack.Cards)
+            AddCardFromPack(cardPack);
+        }
+    }
+
+    private void AddCardFromPack(StoryCardPack cardPack)
+    {
+        foreach (StoryCardData cardData in cardPack.Cards)
+        {
+            if (cardData != null)
             {
-                if (cardData != null)
+                bool allRequiredMemberArePresent = true;
+                foreach (FamilyMemberData familyMember in cardData.FamilyMembersRequired)
+                {
+                    if (FamilyManager.Instance.TryGetFamilyMember(familyMember) == null)
+                        allRequiredMemberArePresent = false;
+
+                }
+
+                if (allRequiredMemberArePresent)
                     CurrentDeck.Add(cardData);
             }
         }
@@ -78,8 +89,6 @@ public class StoryDeckManager : MonoBehaviour
         List<StoryCardData> drawableCards = new List<StoryCardData>();
         foreach (StoryCardData card in CurrentDeck)
         {
-            Debug.Log(card);
-            Debug.Log(card.CardDrawAvailabilityTrustRequirements);
             if (card.CardDrawAvailabilityTrustRequirements.Count > 0)
             {
                 bool anyTrustRequirementsNotMet = false;
