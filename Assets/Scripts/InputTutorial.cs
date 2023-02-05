@@ -12,11 +12,16 @@ public class InputTutorial : MonoBehaviour
     private float fingerStartXPosition;
 
     private const float swipeDistance = 500f;
-    private const float waitDuration = 1.5f;
+    private const float waitDuration = 0.8f;
 
     private void Start()
     {
-        StartCoroutine(TutorialRoutine());
+        finger.gameObject.SetActive(false);
+        
+        if (!Global.SeenTutorialSequence)
+        {
+            StartCoroutine(TutorialRoutine());
+        }
     }
 
 
@@ -128,5 +133,6 @@ public class InputTutorial : MonoBehaviour
 
         finger.gameObject.SetActive(false);
         IsPlaying = false;
+        Global.SeenTutorialSequence = true;
     }
 }

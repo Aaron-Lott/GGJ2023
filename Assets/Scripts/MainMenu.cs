@@ -18,14 +18,19 @@ public class MainMenu : MonoBehaviour
 
     public void StartIntroAnimation()
     {
-        introductionPanel.GetComponent<Animator>().SetTrigger("trigger");
+        if (!Global.SeenIntroSequnece)
+        {
+            introductionPanel.GetComponent<Animator>().SetTrigger("trigger");
+        }
 
         StartCoroutine(LoadGame());
     }
 
     private IEnumerator LoadGame()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(Global.SeenIntroSequnece ? 0 : 20);
+
+        Global.SeenIntroSequnece = true;
         SceneManager.LoadScene("Game");
     }
 
