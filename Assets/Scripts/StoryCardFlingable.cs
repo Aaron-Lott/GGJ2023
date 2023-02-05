@@ -22,13 +22,13 @@ public class StoryCardFlingable : MonoBehaviour
     private float normalisedXPosition;
     private Transform container;
 
-    private const float maxRotation = 20f;
-    private const float submitForce = 1600f;
+    public float maxRotation = 20f;
+    public float submitForce = 1600f;
 
     private void Start() 
     {
         startXPosition = transform.localPosition.x;
-        container = transform.parent.parent.parent;
+        container = StoryDeckManager.Instance.storyCard.transform;
     }
 
     public float X
