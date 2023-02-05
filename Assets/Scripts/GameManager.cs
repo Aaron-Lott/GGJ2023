@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     #endregion
 
-    public delegate void OnGameStateChangedDelegate();
+    public delegate void OnGameStateChangedDelegate(FamilyMemberData winningFamilyMemberData, FamilyMemberData losingFamilyMemberData);
     public static event OnGameStateChangedDelegate OnGameWon;
     public static event OnGameStateChangedDelegate OnGameDraw;
     public static event OnGameStateChangedDelegate OnGameLost;
@@ -53,18 +54,27 @@ public class GameManager : MonoBehaviour
     {
         // Total family members with their turst below the minimum stable trust value
         int totalUntrustingFamilyMembers = 0;
+        int currentyLowestTrust = int.MaxValue;
+
+        FamilyMemberData lowestFamilyMember = null;
         foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
         {
             if (keyValuePair.Value.Trust < minimumStableTrustValue)
             {
                 totalUntrustingFamilyMembers++;
             }
+
+            if (keyValuePair.Value.Trust < currentyLowestTrust)
+            {
+                lowestFamilyMember = keyValuePair.Key;
+                currentyLowestTrust = keyValuePair.Value.Trust;
+            }
         }
 
         // Check if total exceeds minimum to lose game
         if (totalUntrustingFamilyMembers >= minimumUntrustingFamilyMembersToLose)
         {
-            OnGameLost?.Invoke();
+            OnGameLost?.Invoke(null, lowestFamilyMember);
             return true;
         }
         return false;
@@ -74,7 +84,7 @@ public class GameManager : MonoBehaviour
     {
         if (StoryDeckManager.Instance.CurrentDeck.Count <= 0)
         {
-            OnGameDraw?.Invoke();
+            OnGameDraw?.Invoke(null, null);
             return true;
         }
         return false;
@@ -86,7 +96,19 @@ public class GameManager : MonoBehaviour
         if (familyMember != null)
             familyMember.IsSecretUnlocked = true;
 
-        OnGameWon?.Invoke();
+        int currentyLowestTrust = int.MaxValue;
+
+        FamilyMemberData lowestFamilyMember = null;
+        foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
+        {
+            if (keyValuePair.Value.Trust < currentyLowestTrust)
+            {
+                lowestFamilyMember = keyValuePair.Key;
+                currentyLowestTrust = keyValuePair.Value.Trust;
+            }
+        }
+
+        OnGameWon?.Invoke(winningFamilyMember, lowestFamilyMember);
     }
     
     public void ReturnToMainMenu()
