@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
+  m_Name: FamilyKaraokeNight
+  m_EditorClassIdentifier: 
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+  - {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+  CardDrawAvailabilityTrustRequirements: []
+  sprite: {fileID: 21300000, guid: 5d10c7ae0e6f94a4898417e1ea75a663, type: 3}
+  backgroundColour: {r: 1, g: 1, b: 1, a: 1}
+  description: You're getting ready to partake in the annual family karaoke night!
+    Are you dueting with Mum or Aunt Karen?
+  yesText: Mum, her singing in the shower has been impressive recently!
+  noText: Karen, because you know no one else will be with her.
+  hasCustomYesNoColours: 0
+  yesColour: {r: 0, g: 1, b: 0, a: 1}
+  noColour: {r: 1, g: 0, b: 0, a: 1}
+  OnYesFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+    InfluenceAmount: -15
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: 10
+  OnNoFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+    InfluenceAmount: 15
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: -10
+  OnYesPacksToUnlock: []
+  OnNoPacksToUnlock: []
+  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
+  OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}
