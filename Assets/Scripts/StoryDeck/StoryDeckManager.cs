@@ -73,9 +73,55 @@ public class StoryDeckManager : MonoBehaviour
             return;
         }
 
-        int randomCardIndex = Random.Range(0, CurrentDeck.Count);
+        List<StoryCardData> drawableCards = new List<StoryCardData>();
+        foreach (StoryCardData card in CurrentDeck)
+        {
+            if (card.CardDrawAvailabilityTrustRequirements.Count > 0)
+            {
+                bool anyTrustRequirementsNotMet = false;
+                foreach(TrustRequirementInfo trustRequirementInfo in card.CardDrawAvailabilityTrustRequirements)
+                {
+                    FamilyMember familyMember = FamilyManager.Instance.TryGetFamilyMember(trustRequirementInfo.TargetFamilyMember);
+                    if (familyMember != null)
+                    {
+                        switch (trustRequirementInfo.FilterType)
+                        {
+                            case TrustRequirementInfo.TrustRequirementFilterType.GreaterThanMinimumOnly:
+                                if (familyMember.Trust >= trustRequirementInfo.MinimumTrustRequirement)
+                                {
+                                    anyTrustRequirementsNotMet = true;
+                                }
+                                break;
+                            case TrustRequirementInfo.TrustRequirementFilterType.LessThanMaximumOnly:
+                                if (familyMember.Trust <= trustRequirementInfo.MaximumTrustRequirement)
+                                {
+                                    anyTrustRequirementsNotMet = true;
+                                }
+                                break;
+                            case TrustRequirementInfo.TrustRequirementFilterType.WithinMinimumAndMaximum:
+                                if (familyMember.Trust >= trustRequirementInfo.MinimumTrustRequirement
+                                    && familyMember.Trust <= trustRequirementInfo.MaximumTrustRequirement)
+                                {
+                                    anyTrustRequirementsNotMet = true;
+                                }
+                                break;
+                        }
+                    }
+                }
 
-        storyCard.SetupCard(CurrentDeck[randomCardIndex]);
+                // Only add drawable cards that meet all trust requirements
+                if (!anyTrustRequirementsNotMet)
+                    drawableCards.Add(card);
+            }
+            else
+            {
+                drawableCards.Add(card);
+            }
+        }
+
+        int randomCardIndex = Random.Range(0, drawableCards.Count);
+
+        storyCard.SetupCard(drawableCards[randomCardIndex]);
         
         CurrentDeck.Remove(CurrentDeck[randomCardIndex]);
     }
