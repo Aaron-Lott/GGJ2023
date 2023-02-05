@@ -17,7 +17,7 @@ MonoBehaviour:
   CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Uncle Dylan wants to stay the night
+  description: Uncle John wants to stay the weekend!
   yesText: Yes
   noText: No
   hasCustomYesNoColours: 0
@@ -28,6 +28,5 @@ MonoBehaviour:
   OnYesPacksToUnlock:
   - {fileID: 11400000, guid: e17b4cd327a5cc849b69bc1d59d5fbc4, type: 2}
   OnNoPacksToUnlock: []
-  CardDrawAvailabilityTrustRequirements: []
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}
