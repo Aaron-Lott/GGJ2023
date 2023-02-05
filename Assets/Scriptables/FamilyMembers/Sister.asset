@@ -15,7 +15,7 @@ MonoBehaviour:
   FamilyMemberName: Alice
   FamilyMemberRelation: Sister
   Sprite: {fileID: 21300000, guid: c4534b7c1c9584e9e933dfe49af170eb, type: 3}
-  hasSecret: 1
+  hasSecret: 0
   secretSprite: {fileID: 21300000, guid: 995bab93062004ed5a4ce113ac1930cc, type: 3}
   secret: Alice has a secret passion for writing poetry about broccoli
   TrustMax: 100
