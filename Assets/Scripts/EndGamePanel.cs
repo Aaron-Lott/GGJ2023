@@ -44,7 +44,7 @@ public class EndGamePanel : MonoBehaviour
 
     public IEnumerator ReturnToMainMenu()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(20);
         GameManager.Instance.ReturnToMainMenu();
     }
 }
