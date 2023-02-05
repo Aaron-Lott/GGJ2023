@@ -15,8 +15,8 @@ MonoBehaviour:
   FamilyMemberName: John
   FamilyMemberRelation: Uncle
   Sprite: {fileID: 21300000, guid: 96ff8090ed400444ca45e8ef17e76f0c, type: 3}
-  secretSprite: {fileID: 21300000, guid: 40f8ecd1b27d34a80813bf14c543baba, type: 3}
-  secret: Uncle Joe has a secret collection of toy trains that he won't let anyone
-    else touch.
   hasSecret: 1
-  TrustMax: 100
+  secretSprite: {fileID: 21300000, guid: 40f8ecd1b27d34a80813bf14c543baba, type: 3}
+  secret: Uncle John has a secret collection of toy trains that he won't let anyone
+    else touch.
+  TrustMax: 200

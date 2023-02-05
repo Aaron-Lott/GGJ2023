@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: GrandadMakesSoupStoryCard
+  m_Name: SisterBringsBoyfriendHomeStoryCard
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Grandad makes soup?
+  description: Daughter wants to bring boyfriend home
   yesText: Yes
   noText: No
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
+  OnYesFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
+    InfluenceAmount: 38
+  - TargetFamilyMember: {fileID: 0}
+    InfluenceAmount: 0
+  OnNoFamilyMemberInfluences: []
   onYesPacksToUnlock: []
   onNoPacksToUnlock: []
