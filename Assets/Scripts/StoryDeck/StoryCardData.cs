@@ -26,9 +26,9 @@ public class StoryCardData : ScriptableObject
     [NonReorderable] public List<InfluenceFamilyMemberInfo> OnYesFamilyMemberInfluences = new List<InfluenceFamilyMemberInfo>();
     [NonReorderable] public List<InfluenceFamilyMemberInfo> OnNoFamilyMemberInfluences = new List<InfluenceFamilyMemberInfo>();
 
-    public List<StoryCardPack> onYesPacksToUnlock = new List<StoryCardPack>();
-    public List<StoryCardPack> onNoPacksToUnlock = new List<StoryCardPack>();
+    public List<StoryCardPack> OnYesPacksToUnlock = new List<StoryCardPack>();
+    public List<StoryCardPack> OnNoPacksToUnlock = new List<StoryCardPack>();
 
-    public FamilyMember onYesUnlockFamilyMemberSecret;
-    public FamilyMember onNoUnlockFamilyMemberSecret;
+    public FamilyMemberData OnYesTargetFamilyMemberToUnlockSecret;
+    public FamilyMemberData OnNoTargetFamilyMemberToUnlockSecret;
 }
