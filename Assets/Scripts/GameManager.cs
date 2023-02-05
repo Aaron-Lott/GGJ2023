@@ -39,23 +39,9 @@ public class GameManager : MonoBehaviour
         StoryDeckManager.Instance.GenerateNewCard();
     }
 
-    public void CheckGameState(StoryCardData lastSubmittedStoryCardData)
+    public void CheckGameState()
     {
-        CheckGameWin(lastSubmittedStoryCardData);
-
         CheckGameLose();
-    }
-
-    private void CheckGameWin(StoryCardData lastSubmittedStoryCardData)
-    {
-        foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
-            {
-                if (keyValuePair.Value.Trust == keyValuePair.Value.Data.TrustMax)
-                {
-                    OnGameWon?.Invoke();
-                    reportedGameLose = true;
-                }
-            }
     }
 
     private void CheckGameLose()
@@ -74,9 +60,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnWin()
+    public void TriggerWin(FamilyMemberData winningFamilyMember)
     {
-
+        FamilyManager.Instance.TryGetFamilyMember(winningFamilyMember).IsSecretUnlocked = true;
     }
     
 }
