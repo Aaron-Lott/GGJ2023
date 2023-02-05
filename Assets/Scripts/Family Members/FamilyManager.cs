@@ -43,7 +43,7 @@ public class FamilyManager : MonoBehaviour
         // Get random family members.
         for (int i = 0; i < familyMemberAmount; i++)
         {
-            int index = Random.Range(0, i);
+            int index = Random.Range(0, familyMembers.Count);
             familyMembersToCreate.Add(familyMembers[index]);
             familyMembers.RemoveAt(index);
         }
