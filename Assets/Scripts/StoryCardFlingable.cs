@@ -18,7 +18,7 @@ public class StoryCardFlingable : MonoBehaviour
     public TMP_Text familyMemberName;
     public new Rigidbody2D rigidbody2D;
 
-    private float startXPosition;
+    [HideInInspector] public float startXPosition;
     private float normalisedXPosition;
     private Transform container;
 
@@ -33,7 +33,7 @@ public class StoryCardFlingable : MonoBehaviour
 
     public float X
     {
-        get => -transform.localPosition.x;
+        get => transform.localPosition.x;
         set
         {
             float minX = (container as RectTransform).rect.xMin;
@@ -62,7 +62,7 @@ public class StoryCardFlingable : MonoBehaviour
 
         while (elapsedTime < waitTime)
         {
-            X = Mathf.Lerp(-currentXPosition, startXPosition, (elapsedTime / waitTime));
+            X = Mathf.Lerp(currentXPosition, startXPosition, (elapsedTime / waitTime));
             elapsedTime += Time.deltaTime;
         
             yield return null;
