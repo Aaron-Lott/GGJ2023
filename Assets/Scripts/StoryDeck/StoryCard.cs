@@ -62,7 +62,15 @@ public class StoryCard : MonoBehaviour
     private void OnYes()
     {
         InfluenceFamilyMembers(Data.OnYesFamilyMemberInfluences);
-        if (Data.OnYesTargetFamilyMemberToUnlockSecret != null) GameManager.Instance.TriggerWin(Data.OnYesTargetFamilyMemberToUnlockSecret);
+
+        if (Data.OnYesTargetFamilyMemberToUnlockSecret != null)
+        {
+            GameManager.Instance.TriggerWin(Data.OnYesTargetFamilyMemberToUnlockSecret);
+        }
+        else if (GameManager.Instance.CheckGameState())
+        {
+            return;
+        }
 
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.OnYesPacksToUnlock);
         StoryDeckManager.Instance.GenerateNewCard();
@@ -71,7 +79,15 @@ public class StoryCard : MonoBehaviour
     private void OnNo()
     {
         InfluenceFamilyMembers(Data.OnNoFamilyMemberInfluences);
-        if (Data.OnNoTargetFamilyMemberToUnlockSecret != null) GameManager.Instance.TriggerWin(Data.OnNoTargetFamilyMemberToUnlockSecret);
+
+        if (Data.OnNoTargetFamilyMemberToUnlockSecret != null)
+        {
+            GameManager.Instance.TriggerWin(Data.OnNoTargetFamilyMemberToUnlockSecret);
+        }
+        else if (GameManager.Instance.CheckGameState())
+        {
+            return;
+        }
 
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.OnNoPacksToUnlock);
         StoryDeckManager.Instance.GenerateNewCard();

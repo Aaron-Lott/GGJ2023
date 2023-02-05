@@ -5,17 +5,19 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private int minimumStableTrustValue = 15;
+    [SerializeField] private int minimumUntrustingFamilyMembersToLose = 2;
+
     #region singleton
     public static GameManager Instance { get => instance; }
 
     private static GameManager instance;
     #endregion
 
-    public delegate void OnGameLostDelegate();
-    public static event OnGameLostDelegate OnGameLost;
-    public static UnityEvent OnGameWon;
-
-    private bool reportedGameLose;
+    public delegate void OnGameStateChangedDelegate();
+    public static event OnGameStateChangedDelegate OnGameWon;
+    public static event OnGameStateChangedDelegate OnGameDraw;
+    public static event OnGameStateChangedDelegate OnGameLost;
 
     private void Awake()
     {
@@ -30,8 +32,6 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
-
-        reportedGameLose = false;
     }
 
     private void Start() 
@@ -39,30 +39,54 @@ public class GameManager : MonoBehaviour
         StoryDeckManager.Instance.GenerateNewCard();
     }
 
-    public void CheckGameState()
+    /// <returns>Whether checking the game state resulted in a game-end scenario</returns>
+    public bool CheckGameState()
     {
-        CheckGameLose();
+        if (CheckGameLose()) return true;
+
+        if (CheckGameDraw()) return true;
+
+        return false;
     }
 
-    private void CheckGameLose()
+    private bool CheckGameLose()
     {
-        if (!reportedGameLose)
+        // Total family members with their turst below the minimum stable trust value
+        int totalUntrustingFamilyMembers = 0;
+        foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
         {
-            // If a single family member's trust reaches 0, game has been lost
-            foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
+            if (keyValuePair.Value.Trust < minimumStableTrustValue)
             {
-                if (keyValuePair.Value.Trust == 0)
-                {
-                    OnGameLost?.Invoke();
-                    reportedGameLose = true;
-                }
+                totalUntrustingFamilyMembers++;
             }
         }
+
+        // Check if total exceeds minimum to lose game
+        if (totalUntrustingFamilyMembers >= minimumUntrustingFamilyMembersToLose)
+        {
+            OnGameLost?.Invoke();
+            return true;
+        }
+        return false;
+    }
+
+    private bool CheckGameDraw()
+    {
+        if (StoryDeckManager.Instance.CurrentDeck.Count <= 0)
+        {
+            OnGameDraw?.Invoke();
+            return true;
+        }
+        return false;
     }
 
     public void TriggerWin(FamilyMemberData winningFamilyMember)
     {
-        FamilyManager.Instance.TryGetFamilyMember(winningFamilyMember).IsSecretUnlocked = true;
+        FamilyMember familyMember = FamilyManager.Instance.TryGetFamilyMember(winningFamilyMember);
+        if (familyMember != null)
+            familyMember.IsSecretUnlocked = true;
+
+        OnGameWon?.Invoke();
     }
     
 }
