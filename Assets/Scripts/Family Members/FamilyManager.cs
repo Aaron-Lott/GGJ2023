@@ -40,15 +40,15 @@ public class FamilyManager : MonoBehaviour
     private void BuildFamily()
     {
         List<FamilyMemberData> familyMembersToCreate = new List<FamilyMemberData>();
-        List<FamilyMemberData> familyMembers = new List<FamilyMemberData>();
-        familyMembers.AddRange(allFamilyMembers);
+        List<FamilyMemberData> familyMembersAvailable = new List<FamilyMemberData>();
+        familyMembersAvailable.AddRange(allFamilyMembers);
 
         // Get random family members.
         for (int i = 0; i < familyMemberAmount; i++)
         {
-            int index = Random.Range(0, familyMembers.Count);
-            familyMembersToCreate.Add(familyMembers[index]);
-            familyMembers.RemoveAt(index);
+            int index = Random.Range(0, familyMembersAvailable.Count);
+            familyMembersToCreate.Add(familyMembersAvailable[index]);
+            familyMembersAvailable.RemoveAt(index);
         }
 
         // Build active family.
@@ -81,7 +81,7 @@ public class FamilyManager : MonoBehaviour
 
     void Update()
     {
-        DebugFamilyMembersCreated();
+        //DebugFamilyMembersCreated();
     }
 
     public FamilyMember TryGetFamilyMember(FamilyMemberData familyMemberType)

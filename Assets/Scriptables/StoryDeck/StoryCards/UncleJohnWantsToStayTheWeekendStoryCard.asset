@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: UncleJohnWantsToStayTheWeekendStoryCard
   m_EditorClassIdentifier: 
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+  CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
   description: Uncle Dylan wants to stay the night
