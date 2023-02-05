@@ -10,26 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: SisterBringsBoyfriendHomeStoryCard
+  m_Name: SisterEmbarassedToReadPoemsStoryCard
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
-  CardDrawAvailabilityTrustRequirements: []
+  CardDrawAvailabilityTrustRequirements:
+  - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
+    FilterType: 0
+    MinimumTrustRequirement: 60
+    MaximumTrustRequirement: 0
   sprite: {fileID: 21300000, guid: c4534b7c1c9584e9e933dfe49af170eb, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Alice wants to bring her boyfriend over for dinner
-  yesText: Casually accept the fact without objecting
-  noText: Tessingly ask who the boyfriend is
+  description: Alice gets embarassed about reading her poems and decides to recide
+    one about a girl looking for treasure
+  yesText: Tell her you enjoyed the poem's character but didn't really get the meaning
+  noText: Tell her you felt she had a way with words
   hasCustomYesNoColours: 1
-  yesColour: {r: 0, g: 1, b: 0, a: 1}
-  noColour: {r: 1, g: 0, b: 0.87355375, a: 1}
+  yesColour: {r: 1, g: 0, b: 0.06448603, a: 1}
+  noColour: {r: 1, g: 0, b: 0.40356064, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
     InfluenceAmount: 5
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
-    InfluenceAmount: 10
+    InfluenceAmount: 15
   OnYesPacksToUnlock: []
-  OnNoPacksToUnlock: []
+  OnNoPacksToUnlock:
+  - {fileID: 11400000, guid: 0ce5cb749182de941becc7bbbb6239cf, type: 2}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

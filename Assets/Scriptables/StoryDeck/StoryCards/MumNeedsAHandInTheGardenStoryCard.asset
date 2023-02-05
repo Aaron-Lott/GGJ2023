@@ -10,25 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: SisterBringsBoyfriendHomeStoryCard
+  m_Name: MumNeedsAHandInTheGardenStoryCard
   m_EditorClassIdentifier: 
-  FamilyMembersRequired:
-  - {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
+  FamilyMembersRequired: []
   CardDrawAvailabilityTrustRequirements: []
-  sprite: {fileID: 21300000, guid: c4534b7c1c9584e9e933dfe49af170eb, type: 3}
+  sprite: {fileID: 0}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Alice wants to bring her boyfriend over for dinner
-  yesText: Casually accept the fact without objecting
-  noText: Tessingly ask who the boyfriend is
-  hasCustomYesNoColours: 1
+  description: Julie asks if you were free to help with some gardening
+  yesText: Say you're free and give her a hand
+  noText: Mention that you're currently in the middle of something and escape the
+    situation
+  hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
-  noColour: {r: 1, g: 0, b: 0.87355375, a: 1}
+  noColour: {r: 1, g: 0, b: 0, a: 1}
   OnYesFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: 10
+  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
     InfluenceAmount: 5
   OnNoFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
-    InfluenceAmount: 10
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: -5
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
