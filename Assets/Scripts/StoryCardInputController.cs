@@ -11,7 +11,8 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
     [SerializeField] private StoryCard storyCard;
 
     private Vector2 offset;
-    private bool inputDisabled;
+
+    private bool InputDisabled => FindObjectOfType<InputTutorial>()? .IsPlaying ?? false;
 
     /// <summary>
     /// Move the card image while dragging.
@@ -19,17 +20,14 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
     /// <param name="eventData">Touch data for the interaction.</param>
     public void OnDrag(PointerEventData eventData)
     {
-        if (inputDisabled)
+        if (InputDisabled)
         {
             return;
         }
 
         storyCard.currentFlingable.X = (eventData.position + offset).x;
 
-        // Update image background colour and text based of swipe status.
-        storyCard.backgroundImage.color = storyCard.currentFlingable.submitInfo.isYes ? Color.green : Color.red;
-        storyCard.yesText.gameObject.SetActive(storyCard.currentFlingable.submitInfo.isYes);
-        storyCard.noText.gameObject.SetActive(!storyCard.currentFlingable.submitInfo.isYes);
+        UpdateCardProperties();
     }
 
     /// <summary>
@@ -38,7 +36,7 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
     /// <param name="eventData">Touch data for the interaction.</param>
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (inputDisabled)
+        if (InputDisabled)
         {
             return;
         }
@@ -48,7 +46,7 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (inputDisabled)
+        if (InputDisabled)
         {
             return;
         }
@@ -67,5 +65,13 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
         {
             StartCoroutine(storyCard.currentFlingable.ReturnToInitialPosition());
         }
+    }
+
+    public void UpdateCardProperties()
+    {
+        // Update image background colour and text based of swipe status.
+        storyCard.backgroundImage.color = storyCard.currentFlingable.submitInfo.isYes ? Color.green : Color.red;
+        storyCard.yesText.gameObject.SetActive(storyCard.currentFlingable.submitInfo.isYes);
+        storyCard.noText.gameObject.SetActive(!storyCard.currentFlingable.submitInfo.isYes);
     }
 }
