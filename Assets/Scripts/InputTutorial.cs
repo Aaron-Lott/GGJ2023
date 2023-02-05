@@ -11,7 +11,7 @@ public class InputTutorial : MonoBehaviour
 
     private float fingerStartXPosition;
 
-    private const float swipeDistance = 250f;
+    private const float swipeDistance = 500f;
     private const float waitDuration = 1.5f;
 
     private void Start()
