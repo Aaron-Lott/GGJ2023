@@ -23,6 +23,7 @@ public class InputTutorial : MonoBehaviour
     public IEnumerator TutorialRoutine()
     {
         fingerStartXPosition = finger.transform.localPosition.x;
+        finger.gameObject.SetActive(true);
 
         IsPlaying = true;
 
@@ -44,6 +45,7 @@ public class InputTutorial : MonoBehaviour
         {
             storyCardFlingable.X = Mathf.Lerp(currentCardXPosition, endCardXPosition, (elapsedTime / waitTime));
             finger.transform.localPosition = new Vector2(Mathf.Lerp(curentFingerXPosition, endFingerXPosition, (elapsedTime / waitTime)), finger.transform.localPosition.y);
+            inputController.UpdateCardProperties();
             elapsedTime += Time.deltaTime;
         
             yield return null;
@@ -66,6 +68,7 @@ public class InputTutorial : MonoBehaviour
         {
             storyCardFlingable.X = Mathf.Lerp(currentCardXPosition, endCardXPosition, (elapsedTime / waitTime));
             finger.transform.localPosition = new Vector2(Mathf.Lerp(curentFingerXPosition, endFingerXPosition, (elapsedTime / waitTime)), finger.transform.localPosition.y);
+            inputController.UpdateCardProperties();
             elapsedTime += Time.deltaTime;
         
             yield return null;
@@ -88,6 +91,7 @@ public class InputTutorial : MonoBehaviour
         {
             storyCardFlingable.X = Mathf.Lerp(-currentCardXPosition, endCardXPosition, (elapsedTime / waitTime));
             finger.transform.localPosition = new Vector2(Mathf.Lerp(curentFingerXPosition, endFingerXPosition, (elapsedTime / waitTime)), finger.transform.localPosition.y);
+            inputController.UpdateCardProperties();
             elapsedTime += Time.deltaTime;
         
             yield return null;
@@ -110,6 +114,7 @@ public class InputTutorial : MonoBehaviour
         {
             storyCardFlingable.X = Mathf.Lerp(currentCardXPosition, endCardXPosition, (elapsedTime / waitTime));
             finger.transform.localPosition = new Vector2(Mathf.Lerp(curentFingerXPosition, endFingerXPosition, (elapsedTime / waitTime)), finger.transform.localPosition.y);
+            inputController.UpdateCardProperties();
             elapsedTime += Time.deltaTime;
         
             yield return null;
@@ -121,6 +126,7 @@ public class InputTutorial : MonoBehaviour
         yield return new WaitForSeconds(waitDuration);
         elapsedTime = 0;
 
+        finger.gameObject.SetActive(false);
         IsPlaying = false;
     }
 }
