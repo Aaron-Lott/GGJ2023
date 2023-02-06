@@ -42,7 +42,7 @@ public class StoryCard : MonoBehaviour
     public void SetupCard(StoryCardData storyCardData)
     {
         Data = storyCardData;
-        backgroundImage.color = Data.backgroundColour;
+        //backgroundImage.color = Data.backgroundColour;
         descriptionText.text = Data.description;
         yesText.text = Data.yesText;
         noText.text = Data.noText;

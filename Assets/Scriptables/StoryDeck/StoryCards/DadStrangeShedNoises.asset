@@ -24,12 +24,12 @@ MonoBehaviour:
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
-  OnYesFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
-    InfluenceAmount: -15
+  OnYesFamilyMemberInfluences: []
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
-    InfluenceAmount: 15
+    InfluenceAmount: -10
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: 10
   OnYesPacksToUnlock:
   - {fileID: 11400000, guid: e2d845a09eb9e4ae5aaf1ac0a2b7de97, type: 2}
   OnNoPacksToUnlock: []

@@ -18,4 +18,4 @@ MonoBehaviour:
   hasSecret: 0
   secretSprite: {fileID: 21300000, guid: ea194f6e0abb84f93887d90e9d53273c, type: 3}
   secret: Dylan's obsession with My Little Pony figurines.
-  TrustMax: 125
+  TrustMax: 110

@@ -37,7 +37,13 @@ public class GameManager : MonoBehaviour
 
     private void Start() 
     {
-        StoryDeckManager.Instance.GenerateNewCard();
+        bool beganGameWithValidFirstCard = StoryDeckManager.Instance.GenerateNewCard();
+
+        if (!beganGameWithValidFirstCard)
+        {
+            Debug.LogError("No cards able to be generated on first turn. Please check deck setup!");
+            OnGameDraw?.Invoke(null, null);
+        }
     }
 
     /// <returns>Whether checking the game state resulted in a game-end scenario</returns>
@@ -55,7 +61,6 @@ public class GameManager : MonoBehaviour
         // Total family members with their turst below the minimum stable trust value
         int totalUntrustingFamilyMembers = 0;
         int currentyLowestTrust = int.MaxValue;
-
         FamilyMemberData lowestFamilyMember = null;
         foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
         {
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     private bool CheckGameDraw()
     {
-        if (StoryDeckManager.Instance.CurrentDeck.Count <= 0)
+        if (StoryDeckManager.Instance.GetDrawableCards().Count <= 0)
         {
             OnGameDraw?.Invoke(null, null);
             return true;
@@ -94,21 +99,22 @@ public class GameManager : MonoBehaviour
     {
         FamilyMember familyMember = FamilyManager.Instance.TryGetFamilyMember(winningFamilyMember);
         if (familyMember != null)
+        {
             familyMember.IsSecretUnlocked = true;
 
-        int currentyLowestTrust = int.MaxValue;
-
-        FamilyMemberData lowestFamilyMember = null;
-        foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
-        {
-            if (keyValuePair.Value.Trust < currentyLowestTrust)
+            int currentyLowestTrust = int.MaxValue;
+            FamilyMemberData lowestFamilyMember = null;
+            foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
             {
-                lowestFamilyMember = keyValuePair.Key;
-                currentyLowestTrust = keyValuePair.Value.Trust;
+                if (keyValuePair.Value.Trust < currentyLowestTrust)
+                {
+                    lowestFamilyMember = keyValuePair.Key;
+                    currentyLowestTrust = keyValuePair.Value.Trust;
+                }
             }
-        }
 
-        OnGameWon?.Invoke(winningFamilyMember, lowestFamilyMember);
+            OnGameWon?.Invoke(winningFamilyMember, lowestFamilyMember);
+        }
     }
     
     public void ReturnToMainMenu()

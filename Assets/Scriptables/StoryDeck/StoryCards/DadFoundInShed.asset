@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: DadFoundInShed
   m_EditorClassIdentifier: 
-  FamilyMembersRequired: []
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
   CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 68a3cdecef36744d8a9f77eca93e595d, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
@@ -20,9 +21,9 @@ MonoBehaviour:
     he slams the door shut and asks you leave!
   yesText: Tell Mum about Dad's alter ego...
   noText: Walk away, no questions needed.
-  hasCustomYesNoColours: 0
-  yesColour: {r: 0, g: 1, b: 0, a: 1}
-  noColour: {r: 1, g: 0, b: 0, a: 1}
+  hasCustomYesNoColours: 1
+  yesColour: {r: 0.66253996, g: 0, b: 1, a: 1}
+  noColour: {r: 0, g: 1, b: 0.3510604, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
     InfluenceAmount: -15

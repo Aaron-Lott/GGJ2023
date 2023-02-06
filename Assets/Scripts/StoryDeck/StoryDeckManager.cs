@@ -15,7 +15,7 @@ public class StoryDeckManager : MonoBehaviour
     private static StoryDeckManager instance;
     #endregion
 
-    public List<StoryCardData> CurrentDeck { get; private set; } = new List<StoryCardData>();
+    public List<StoryCardData> CurrentDeck = new List<StoryCardData>();
 
     private void Awake()
     {
@@ -79,20 +79,15 @@ public class StoryDeckManager : MonoBehaviour
         }
     }
 
-    public void GenerateNewCard()
+    public List<StoryCardData> GetDrawableCards()
     {
-        if (CurrentDeck.Count <= 0)
-        {
-            return;
-        }
-
         List<StoryCardData> drawableCards = new List<StoryCardData>();
         foreach (StoryCardData card in CurrentDeck)
         {
             if (card.CardDrawAvailabilityTrustRequirements.Count > 0)
             {
                 bool anyTrustRequirementsNotMet = false;
-                foreach(TrustRequirementInfo trustRequirementInfo in card.CardDrawAvailabilityTrustRequirements)
+                foreach (TrustRequirementInfo trustRequirementInfo in card.CardDrawAvailabilityTrustRequirements)
                 {
                     FamilyMember familyMember = FamilyManager.Instance.TryGetFamilyMember(trustRequirementInfo.TargetFamilyMember);
                     if (familyMember != null)
@@ -100,20 +95,20 @@ public class StoryDeckManager : MonoBehaviour
                         switch (trustRequirementInfo.FilterType)
                         {
                             case TrustRequirementInfo.TrustRequirementFilterType.GreaterThanMinimumOnly:
-                                if (familyMember.Trust >= trustRequirementInfo.MinimumTrustRequirement)
+                                if (familyMember.Trust < trustRequirementInfo.MinimumTrustRequirement)
                                 {
                                     anyTrustRequirementsNotMet = true;
                                 }
                                 break;
                             case TrustRequirementInfo.TrustRequirementFilterType.LessThanMaximumOnly:
-                                if (familyMember.Trust <= trustRequirementInfo.MaximumTrustRequirement)
+                                if (familyMember.Trust > trustRequirementInfo.MaximumTrustRequirement)
                                 {
                                     anyTrustRequirementsNotMet = true;
                                 }
                                 break;
                             case TrustRequirementInfo.TrustRequirementFilterType.WithinMinimumAndMaximum:
-                                if (familyMember.Trust >= trustRequirementInfo.MinimumTrustRequirement
-                                    && familyMember.Trust <= trustRequirementInfo.MaximumTrustRequirement)
+                                if (familyMember.Trust < trustRequirementInfo.MinimumTrustRequirement
+                                    || familyMember.Trust > trustRequirementInfo.MaximumTrustRequirement)
                                 {
                                     anyTrustRequirementsNotMet = true;
                                 }
@@ -132,10 +127,25 @@ public class StoryDeckManager : MonoBehaviour
             }
         }
 
-        int randomCardIndex = Random.Range(0, drawableCards.Count);
+        return drawableCards;
+    }
 
+    public bool GenerateNewCard()
+    {
+        List<StoryCardData> drawableCards = GetDrawableCards();
+
+        if (drawableCards.Count <= 0)
+        {
+            return false;
+        }
+
+        // Pick and setup random card from drawable
+        int randomCardIndex = Random.Range(0, drawableCards.Count);
         storyCard.SetupCard(drawableCards[randomCardIndex]);
         
-        CurrentDeck.Remove(CurrentDeck[randomCardIndex]);
+        // Remove the card from the deck
+        CurrentDeck.Remove(drawableCards[randomCardIndex]);
+
+        return true;
     }
 }

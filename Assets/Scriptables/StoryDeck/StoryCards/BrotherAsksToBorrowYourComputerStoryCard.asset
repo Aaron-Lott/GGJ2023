@@ -21,7 +21,7 @@ MonoBehaviour:
     evening
   yesText: Give him your computer but make hiim promise to give it back before 8
   noText: Say you need it right now, but offer him your DS Lite instead
-  hasCustomYesNoColours: 0
+  hasCustomYesNoColours: 1
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 0, g: 0.7647176, b: 1, a: 1}
   OnYesFamilyMemberInfluences:

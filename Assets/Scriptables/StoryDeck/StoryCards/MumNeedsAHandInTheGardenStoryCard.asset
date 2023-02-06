@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
   m_Name: MumNeedsAHandInTheGardenStoryCard
   m_EditorClassIdentifier: 
-  FamilyMembersRequired: []
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
   CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 5d10c7ae0e6f94a4898417e1ea75a663, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}

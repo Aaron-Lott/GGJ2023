@@ -20,9 +20,9 @@ MonoBehaviour:
   description: Uncle feels a bit light headed
   yesText: Tell him to sit down for a moment, and grab him a cup of tea
   noText: Tell him to sit down for a moment, mentioning how great the kite was
-  hasCustomYesNoColours: 0
-  yesColour: {r: 0, g: 1, b: 0, a: 1}
-  noColour: {r: 1, g: 0, b: 0, a: 1}
+  hasCustomYesNoColours: 1
+  yesColour: {r: 1, g: 0.6228881, b: 0, a: 1}
+  noColour: {r: 0, g: 0.86242056, b: 1, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
     InfluenceAmount: -10
