@@ -73,6 +73,7 @@ public class StoryCard : MonoBehaviour
         }
 
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.OnYesPacksToUnlock);
+        StoryDeckManager.Instance.AddCardFromCard(Data.OnYesDrawDirectFollowOnCard);
         StoryDeckManager.Instance.GenerateNewCard();
     }
 
@@ -90,6 +91,7 @@ public class StoryCard : MonoBehaviour
         }
 
         StoryDeckManager.Instance.AddUnlockablePacksToDeck(Data.OnNoPacksToUnlock);
+        StoryDeckManager.Instance.AddCardFromCard(Data.OnNoDrawDirectFollowOnCard);
         StoryDeckManager.Instance.GenerateNewCard();
     }
 

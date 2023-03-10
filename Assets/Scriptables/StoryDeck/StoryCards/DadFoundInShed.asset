@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
+  - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
   CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 68a3cdecef36744d8a9f77eca93e595d, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
@@ -27,10 +28,14 @@ MonoBehaviour:
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
     InfluenceAmount: -15
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: 5
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: bdb1e7a06aa693645a08229dad2b10d2, type: 2}
     InfluenceAmount: 5
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
+  OnYesDrawDirectFollowOnCard: {fileID: 0}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

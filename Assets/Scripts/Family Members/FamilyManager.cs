@@ -24,7 +24,7 @@ public class FamilyManager : MonoBehaviour
         #region singleton awake
         if (instance != this && instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {

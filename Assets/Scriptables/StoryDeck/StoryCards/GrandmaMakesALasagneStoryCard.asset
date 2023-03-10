@@ -10,28 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: AuntKarenBakesAPie
+  m_Name: GrandmaMakesALasagneStoryCard
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
-  - {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+  - {fileID: 11400000, guid: 6dba0451093ee51458ac90792067c6a2, type: 2}
   CardDrawAvailabilityTrustRequirements: []
-  sprite: {fileID: 21300000, guid: c3c72287193214996af4f29c39ba21ef, type: 3}
+  sprite: {fileID: 21300000, guid: 3f48e72eabec20d448f89160cf4d3e7b, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Aunt Karen has baked a pie and insists you try a slice, are you brave
-    enough?
-  yesText: Yes it looks delicious!
-  noText: No thanks, I can smell it stinking from here!
+  description: Gran offers you a fresh lasagne made from her special recipe
+  yesText: Yes this looks amazing, what's the recipe?
+  noText: No thanks, I don't really like lasagne
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
   OnYesFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
-    InfluenceAmount: 10
   - TargetFamilyMember: {fileID: 11400000, guid: 6dba0451093ee51458ac90792067c6a2, type: 2}
+    InfluenceAmount: 10
+  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
     InfluenceAmount: -10
   OnNoFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
-    InfluenceAmount: -20
+  - TargetFamilyMember: {fileID: 11400000, guid: 6dba0451093ee51458ac90792067c6a2, type: 2}
+    InfluenceAmount: -10
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
   OnYesDrawDirectFollowOnCard: {fileID: 0}

@@ -484,7 +484,7 @@ MonoBehaviour:
 
 
     And remember, if you don''t get along, they may return
-    you to the orphanage like last time!'
+    you to the orphanage like the last family!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
   m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
@@ -878,11 +878,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Your days at the orphanage are over as the Willotts family have agreed
-    to take you in.
+    to take you in on a trail period.
 
 
-    But as a sceptical teenager, you believe each family member
-    has some secret side to them they dare to share.'
+    But as a sceptical teenager, you believe
+    each family member has some secret side to them they dare to share.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
   m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}

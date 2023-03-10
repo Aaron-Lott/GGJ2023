@@ -10,33 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: MumSecretReveal
+  m_Name: MumGrandmaMumDoesntWantToTalkAboutGrandmasPoleStoryCard
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-  CardDrawAvailabilityTrustRequirements:
-  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-    FilterType: 0
-    MinimumTrustRequirement: 75
-    MaximumTrustRequirement: 0
+  - {fileID: 11400000, guid: 6dba0451093ee51458ac90792067c6a2, type: 2}
+  CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 5d10c7ae0e6f94a4898417e1ea75a663, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: You hear Mum secret talking to the plants in the back garden, how
-    do you show your concern?
-  yesText: Your secret is safe with me Mum.
-  noText: You dial the number to the nearest mental institution.
+  description: Mum refuses to elaborate on "things that even I want to forget"
+  yesText: Tell mum "if you won't tell me, I'll go find out for myself then!"
+  noText: Give mum a disappointed look saying "fiiine"
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-    InfluenceAmount: 100
+    InfluenceAmount: -5
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-    InfluenceAmount: -25
-  OnYesPacksToUnlock: []
+    InfluenceAmount: 5
+  OnYesPacksToUnlock:
+  - {fileID: 11400000, guid: 2f9e34f703bea6e47b9deab45be7efdb, type: 2}
   OnNoPacksToUnlock: []
   OnYesDrawDirectFollowOnCard: {fileID: 0}
   OnNoDrawDirectFollowOnCard: {fileID: 0}
-  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

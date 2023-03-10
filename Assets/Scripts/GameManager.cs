@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         #region singleton awake
         if (instance != this && instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     private bool CheckGameDraw()
     {
-        if (StoryDeckManager.Instance.GetDrawableCards().Count <= 0)
+        if (StoryDeckManager.Instance.GetDrawableCards().Count <= 0 && !StoryDeckManager.Instance.GetNextCardIsDirectCard())
         {
             OnGameDraw?.Invoke(null, null);
             return true;
@@ -106,6 +106,9 @@ public class GameManager : MonoBehaviour
             FamilyMemberData lowestFamilyMember = null;
             foreach (var keyValuePair in FamilyManager.Instance.FamilyMembers)
             {
+                if (keyValuePair.Key == winningFamilyMember)
+                    continue;
+
                 if (keyValuePair.Value.Trust < currentyLowestTrust)
                 {
                     lowestFamilyMember = keyValuePair.Key;

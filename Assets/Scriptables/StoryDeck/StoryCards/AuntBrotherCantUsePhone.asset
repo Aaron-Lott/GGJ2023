@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: AuntCantUsePhone
+  m_Name: AuntBrotherCantUsePhone
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: 3e1f049678e8a40d19bb51500a93ad94, type: 2}

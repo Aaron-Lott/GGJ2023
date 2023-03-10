@@ -17,12 +17,15 @@ public class StoryDeckManager : MonoBehaviour
 
     public List<StoryCardData> CurrentDeck = new List<StoryCardData>();
 
+    private bool nextCardIsDirectCard = false;
+    private StoryCardData nextDirectCard;
+
     private void Awake()
     {
         #region singleton awake
         if (instance != this && instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
@@ -44,9 +47,12 @@ public class StoryDeckManager : MonoBehaviour
 
         foreach (StoryCardPack cardPack in storyDeckDatabase.UnlockablePacks)
         {
-            if (cardPack.isInitiallyUnlocked)
+            if (cardPack != null)
             {
-                AddCardFromPack(cardPack);
+                if (cardPack.isInitiallyUnlocked)
+                {
+                    AddCardFromPack(cardPack);
+                }
             }
         }
     }
@@ -55,7 +61,10 @@ public class StoryDeckManager : MonoBehaviour
     {
         foreach (StoryCardPack cardPack in cardPacks)
         {
-            AddCardFromPack(cardPack);
+            if (cardPack != null)
+            {
+                AddCardFromPack(cardPack);
+            }
         }
     }
 
@@ -70,11 +79,29 @@ public class StoryDeckManager : MonoBehaviour
                 {
                     if (FamilyManager.Instance.TryGetFamilyMember(familyMember) == null)
                         allRequiredMemberArePresent = false;
-
                 }
 
                 if (allRequiredMemberArePresent)
                     CurrentDeck.Add(cardData);
+            }
+        }
+    }
+
+    public void AddCardFromCard(StoryCardData cardData)
+    {
+        if (cardData != null)
+        {
+            bool allRequiredMemberArePresent = true;
+            foreach (FamilyMemberData familyMember in cardData.FamilyMembersRequired)
+            {
+                if (FamilyManager.Instance.TryGetFamilyMember(familyMember) == null)
+                    allRequiredMemberArePresent = false;
+            }
+
+            if (allRequiredMemberArePresent)
+            {
+                nextDirectCard = cardData;
+                nextCardIsDirectCard = true;
             }
         }
     }
@@ -130,9 +157,27 @@ public class StoryDeckManager : MonoBehaviour
         return drawableCards;
     }
 
+    public bool GetNextCardIsDirectCard() => nextCardIsDirectCard;
+
     public bool GenerateNewCard()
     {
+        Debug.Log("nextDirectCard: " + nextDirectCard);
+
+        if (nextCardIsDirectCard)
+        {
+            if (nextDirectCard != null)
+            {
+                storyCard.SetupCard(nextDirectCard);
+                nextDirectCard = null;
+                nextCardIsDirectCard = false;
+                return true;
+            }
+        }
+
         List<StoryCardData> drawableCards = GetDrawableCards();
+
+        Debug.Log("drawableCards:");
+        drawableCards.ForEach((card) => Debug.Log(card));
 
         if (drawableCards.Count <= 0)
         {
@@ -142,7 +187,7 @@ public class StoryDeckManager : MonoBehaviour
         // Pick and setup random card from drawable
         int randomCardIndex = Random.Range(0, drawableCards.Count);
         storyCard.SetupCard(drawableCards[randomCardIndex]);
-        
+
         // Remove the card from the deck
         CurrentDeck.Remove(drawableCards[randomCardIndex]);
 

@@ -31,8 +31,9 @@ MonoBehaviour:
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 3e1f049678e8a40d19bb51500a93ad94, type: 2}
     InfluenceAmount: -15
-  OnYesPacksToUnlock:
-  - {fileID: 11400000, guid: 182261494bc4ab64da5290cf3c10e321, type: 2}
+  OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
+  OnYesDrawDirectFollowOnCard: {fileID: 11400000, guid: 1eb061d25d4b6be4c9585c945a81616c, type: 2}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

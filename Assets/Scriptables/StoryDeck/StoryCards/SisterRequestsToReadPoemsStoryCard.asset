@@ -31,12 +31,14 @@ MonoBehaviour:
   noColour: {r: 0.3388934, g: 0, b: 1, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
-    InfluenceAmount: 15
+    InfluenceAmount: 10
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 691e98d51aa8f46cbae21273aed7ade0, type: 2}
     InfluenceAmount: 15
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock:
   - {fileID: 11400000, guid: 0ce5cb749182de941becc7bbbb6239cf, type: 2}
+  OnYesDrawDirectFollowOnCard: {fileID: 11400000, guid: e904fb38efaf2074d996dabe1cd9fd27, type: 2}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

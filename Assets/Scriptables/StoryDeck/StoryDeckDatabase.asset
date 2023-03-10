@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BasePack: {fileID: 11400000, guid: 28f02bd7c0eabf240bc324774afefb2a, type: 2}
   UnlockablePacks:
-  - {fileID: 11400000, guid: e17b4cd327a5cc849b69bc1d59d5fbc4, type: 2}
+  - {fileID: 11400000, guid: 942b426c5dd280b44852a8cdd0983eb5, type: 2}

@@ -37,5 +37,7 @@ MonoBehaviour:
     InfluenceAmount: -5
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
+  OnYesDrawDirectFollowOnCard: {fileID: 0}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

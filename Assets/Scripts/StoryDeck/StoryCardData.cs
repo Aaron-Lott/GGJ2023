@@ -48,6 +48,11 @@ public class StoryCardData : ScriptableObject
     public List<StoryCardPack> OnYesPacksToUnlock = new List<StoryCardPack>();
     public List<StoryCardPack> OnNoPacksToUnlock = new List<StoryCardPack>();
 
+    [Header("Direct Follow On Card")]
+    public StoryCardData OnYesDrawDirectFollowOnCard;
+    public StoryCardData OnNoDrawDirectFollowOnCard;
+
+    [Header("Trigger A Target's Secret To Unlock")]
     public FamilyMemberData OnYesTargetFamilyMemberToUnlockSecret;
     public FamilyMemberData OnNoTargetFamilyMemberToUnlockSecret;
 }

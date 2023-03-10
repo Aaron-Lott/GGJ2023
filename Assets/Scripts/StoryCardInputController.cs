@@ -75,7 +75,7 @@ public class StoryCardInputController : MonoBehaviour, IDragHandler, IPointerDow
         if (storyCard.Data.hasCustomYesNoColours)
             storyCard.backgroundImage.color = storyCard.currentFlingable.submitInfo.isYes ? storyCard.Data.yesColour : storyCard.Data.noColour;
         else
-            storyCard.backgroundImage.color = storyCard.currentFlingable.submitInfo.isYes ? Color.green : Color.red;
+            storyCard.backgroundImage.color = storyCard.currentFlingable.submitInfo.isYes ? Color.cyan : Color.cyan;
 
         storyCard.yesText.gameObject.SetActive(storyCard.currentFlingable.submitInfo.isYes);
         storyCard.noText.gameObject.SetActive(!storyCard.currentFlingable.submitInfo.isYes);
