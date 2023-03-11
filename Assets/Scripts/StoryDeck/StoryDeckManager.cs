@@ -161,7 +161,7 @@ public class StoryDeckManager : MonoBehaviour
 
     public bool GenerateNewCard()
     {
-        Debug.Log("nextDirectCard: " + nextDirectCard);
+        //Debug.Log("nextDirectCard: " + nextDirectCard);
 
         if (nextCardIsDirectCard)
         {
@@ -176,8 +176,8 @@ public class StoryDeckManager : MonoBehaviour
 
         List<StoryCardData> drawableCards = GetDrawableCards();
 
-        Debug.Log("drawableCards:");
-        drawableCards.ForEach((card) => Debug.Log(card));
+        //Debug.Log("drawableCards:");
+        //drawableCards.ForEach((card) => Debug.Log(card));
 
         if (drawableCards.Count <= 0)
         {
