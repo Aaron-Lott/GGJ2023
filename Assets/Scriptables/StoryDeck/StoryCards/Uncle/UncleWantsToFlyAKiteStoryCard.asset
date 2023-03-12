@@ -21,9 +21,9 @@ MonoBehaviour:
     MaximumTrustRequirement: 0
   sprite: {fileID: 21300000, guid: 70866dab1e96e4e42b38a4725770f18b, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Uncle wants to fly a kite and asks you to join him!
+  description: Uncle John wants to fly a kite and asks you to join him!
   yesText: Agree to join him, grabbing your whellies
-  noText: Give him a "Kites... Seriously?..." look and say you're totally bussy with
+  noText: Give him a "Kites... Seriously?..." look and say you're totally busy with
     something
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}

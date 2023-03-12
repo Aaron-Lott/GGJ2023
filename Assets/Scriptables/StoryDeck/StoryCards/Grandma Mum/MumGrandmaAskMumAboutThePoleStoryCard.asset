@@ -18,7 +18,7 @@ MonoBehaviour:
   CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 5d10c7ae0e6f94a4898417e1ea75a663, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Mum explains that the pole is Grandmas', and that if you'd like to
+  description: Mum explains that the pole is Grandma's, and that if you'd like to
     know more about her past, you should ask her yourself
   yesText: Agree and go searching for Grandma
   noText: Pressure Mum to tell you the truth

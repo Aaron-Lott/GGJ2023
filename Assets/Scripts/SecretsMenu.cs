@@ -73,11 +73,11 @@ public class SecretsMenu : MonoBehaviour
 
     public void OpenPopup()
     {
+        gameObject.SetActive(true);
         AudioManager.Instance?.ButtonClick();
         StopAllCoroutines();
         PopulateSecrets();
 
-        gameObject.SetActive(true);
         StartCoroutine(OpenPopupRoutine());
     }
 

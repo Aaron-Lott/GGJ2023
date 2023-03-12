@@ -19,7 +19,7 @@ MonoBehaviour:
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
   description: Dylan wants to borrow your computer apparently for school work, all
     evening
-  yesText: Give him your computer but make hiim promise to give it back before 8
+  yesText: Give him your computer but make him promise to give it back before 8
   noText: Say you need it right now, but offer him your DS Lite instead
   hasCustomYesNoColours: 1
   yesColour: {r: 0, g: 1, b: 0, a: 1}
@@ -32,5 +32,7 @@ MonoBehaviour:
     InfluenceAmount: 10
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
+  OnYesDrawDirectFollowOnCard: {fileID: 0}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}
