@@ -34,7 +34,6 @@ public class FamilyStatusBar : MonoBehaviour
             portrait.happinessImage.fillAmount = ((float)familyMember.Value.Trust / (float)familyMember.Value.Data.TrustMax);
 
             Color happinessColor;
-
             switch (familyMember.Value.TrustLevel)
             {
                 case FamilyMember.TrustLevels.Low:
@@ -48,7 +47,6 @@ public class FamilyStatusBar : MonoBehaviour
                     happinessColor = Color.green;
                     break;
             }
-
             portrait.happinessImage.color = happinessColor;
 
             portrait.labelNameText.text = familyMember.Value.Data.FamilyMemberName;
@@ -60,13 +58,61 @@ public class FamilyStatusBar : MonoBehaviour
         }
     }
 
-    public void UpdateFamilyMemberHappinesUI(FamilyMember familyMember)
+    public IEnumerator UpdateFamilyMemberHappinessUI(FamilyMember familyMember, int changeInTrust)
     {
         foreach (FamilyMemberPortrait portrait in familyMemberPortraits)
         {
             if (portrait.familyMemberType == familyMember.Data)
             {
                 portrait.happinessImage.fillAmount = ((float)familyMember.Trust / (float)familyMember.Data.TrustMax);
+
+                if (changeInTrust > 0) portrait.happinessImage.color = Color.green;
+                if (changeInTrust < 0) portrait.happinessImage.color = Color.red;
+
+                yield return new WaitForSecondsRealtime(0.8f);
+
+                Color happinessColor;
+                switch (familyMember.TrustLevel)
+                {
+                    case FamilyMember.TrustLevels.Low:
+                        happinessColor = Color.red;
+                        break;
+                    case FamilyMember.TrustLevels.Medium:
+                        happinessColor = Color.yellow;
+                        break;
+                    case FamilyMember.TrustLevels.High:
+                    default:
+                        happinessColor = Color.green;
+                        break;
+                }
+                portrait.happinessImage.color = happinessColor;
+            }
+        }
+    }
+
+    public void SkipUpdateFamilyMemberHappinessUI(FamilyMember familyMember, int changeInTrust)
+    {
+        foreach (FamilyMemberPortrait portrait in familyMemberPortraits)
+        {
+            if (portrait.familyMemberType == familyMember.Data)
+            {
+                portrait.happinessImage.fillAmount = ((float)familyMember.Trust / (float)familyMember.Data.TrustMax);
+
+                Color happinessColor;
+                switch (familyMember.TrustLevel)
+                {
+                    case FamilyMember.TrustLevels.Low:
+                        happinessColor = Color.red;
+                        break;
+                    case FamilyMember.TrustLevels.Medium:
+                        happinessColor = Color.yellow;
+                        break;
+                    case FamilyMember.TrustLevels.High:
+                    default:
+                        happinessColor = Color.green;
+                        break;
+                }
+                portrait.happinessImage.color = happinessColor;
             }
         }
     }

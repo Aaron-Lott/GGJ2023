@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     {
         if (!Global.SeenIntroSequnece)
         {
+            introductionPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
             introductionPanel.GetComponent<Animator>().SetTrigger("trigger");
         }
 

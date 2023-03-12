@@ -27,6 +27,10 @@ public class StoryCard : MonoBehaviour
     [HideInInspector] public StoryCardFlingable currentFlingable;
     [HideInInspector] public StoryCardFlingable previousFlingable;
 
+    private Coroutine updateFamilyMemberUICoroutine;
+    private FamilyMember currentUpdatingUIFamilyMember;
+    private int currentUpdatingUIFamilyMemberInfluenceChange;
+
     private void OnEnable()
     {
         OnYesChosen.AddListener(OnYes);
@@ -106,7 +110,15 @@ public class StoryCard : MonoBehaviour
                 if (keyValuePair.Key == info.TargetFamilyMember)
                 {
                     keyValuePair.Value.InfluenceTrust(info.InfluenceAmount);
-                    familyStatusBar.UpdateFamilyMemberHappinesUI(keyValuePair.Value);
+
+                    if (updateFamilyMemberUICoroutine != null)
+                    {
+                        StopCoroutine(updateFamilyMemberUICoroutine);
+                        familyStatusBar.SkipUpdateFamilyMemberHappinessUI(currentUpdatingUIFamilyMember, currentUpdatingUIFamilyMemberInfluenceChange);
+                    }
+                    currentUpdatingUIFamilyMember = keyValuePair.Value;
+                    currentUpdatingUIFamilyMemberInfluenceChange = info.InfluenceAmount;
+                    StartCoroutine(familyStatusBar.UpdateFamilyMemberHappinessUI(currentUpdatingUIFamilyMember, currentUpdatingUIFamilyMemberInfluenceChange));
                 }
             }
         }

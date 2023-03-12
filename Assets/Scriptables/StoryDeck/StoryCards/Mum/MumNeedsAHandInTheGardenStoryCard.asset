@@ -10,32 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: AuntBrotherCantUsePhone
+  m_Name: MumNeedsAHandInTheGardenStoryCard
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
-  - {fileID: 11400000, guid: 3e1f049678e8a40d19bb51500a93ad94, type: 2}
-  - {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+  - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
   CardDrawAvailabilityTrustRequirements: []
-  sprite: {fileID: 21300000, guid: c3c72287193214996af4f29c39ba21ef, type: 3}
+  sprite: {fileID: 21300000, guid: 5d10c7ae0e6f94a4898417e1ea75a663, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: You see Aunt Karen painfully struggling to use her new phone, do you
-    stop playing games with Dylan and offer help?
-  yesText: Of course, I'm a tech wizard!
-  noText: No thanks, I'm busy with Dylan.
+  description: Julie asks if you were free to help with some gardening
+  yesText: Say you're free and give her a hand
+  noText: Mention that you're currently in the middle of something and escape the
+    situation
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
   OnYesFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
     InfluenceAmount: 10
-  - TargetFamilyMember: {fileID: 11400000, guid: 3e1f049678e8a40d19bb51500a93ad94, type: 2}
-    InfluenceAmount: -10
+  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
+    InfluenceAmount: 5
   OnNoFamilyMemberInfluences:
-  - TargetFamilyMember: {fileID: 11400000, guid: 80827736c819445f79c191363ff67a02, type: 2}
-    InfluenceAmount: -10
-  - TargetFamilyMember: {fileID: 11400000, guid: 3e1f049678e8a40d19bb51500a93ad94, type: 2}
-    InfluenceAmount: 10
+  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+    InfluenceAmount: -5
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
+  OnYesDrawDirectFollowOnCard: {fileID: 0}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

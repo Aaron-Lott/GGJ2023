@@ -10,33 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: MumSecretReveal
+  m_Name: DoTheWashingForMumStoryCard
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-  CardDrawAvailabilityTrustRequirements:
-  - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-    FilterType: 0
-    MinimumTrustRequirement: 75
-    MaximumTrustRequirement: 0
+  CardDrawAvailabilityTrustRequirements: []
   sprite: {fileID: 21300000, guid: 5d10c7ae0e6f94a4898417e1ea75a663, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: You hear Mum secret talking to the plants in the back garden, how
-    do you show your concern?
-  yesText: Your secret is safe with me Mum.
-  noText: You dial the number to the nearest mental institution.
+  description: After a filling dinner with the family, Mum asks you to do the dishes
+  yesText: Decide to tell mum later when she asks why they aren't done that you totally
+    forgot about the chores and hope to get out of it
+  noText: Hop into the kitchen and get scrubbing, nothing like a clear surface!
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-    InfluenceAmount: 100
+    InfluenceAmount: -5
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
-    InfluenceAmount: -25
+    InfluenceAmount: 10
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
   OnYesDrawDirectFollowOnCard: {fileID: 0}
   OnNoDrawDirectFollowOnCard: {fileID: 0}
-  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 11400000, guid: 497051b29863e417eadaf6ce2635645a, type: 2}
+  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

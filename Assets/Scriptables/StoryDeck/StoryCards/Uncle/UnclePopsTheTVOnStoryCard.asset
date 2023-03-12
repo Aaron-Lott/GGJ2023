@@ -10,33 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
-  m_Name: UncleWantsToFlyAKiteStoryCard
+  m_Name: UnclePopsTheTVOnStoryCard
   m_EditorClassIdentifier: 
   FamilyMembersRequired:
   - {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
-  CardDrawAvailabilityTrustRequirements:
-  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
-    FilterType: 0
-    MinimumTrustRequirement: 15
-    MaximumTrustRequirement: 0
-  sprite: {fileID: 21300000, guid: 1ebe9d3ac5ce74f3589c006da297bdc7, type: 3}
+  CardDrawAvailabilityTrustRequirements: []
+  sprite: {fileID: 21300000, guid: 1b9a69ddb68bb4606aedc6798ba0c29c, type: 3}
   backgroundColour: {r: 1, g: 1, b: 1, a: 1}
-  description: Uncle wants to fly a kite and asks you to join him!
-  yesText: Agree to join him, grabbing your whellies
-  noText: Give him a "Kites... Seriously?..." look and say you're totally bussy with
-    something
+  description: You find Uncle John watching some sort of nature show on the TV
+  yesText: Ask to change the channel to the footy (assuming he as much a fan as Dad)
+  noText: Decide to join and learn a new thing or two about the world
   hasCustomYesNoColours: 0
   yesColour: {r: 0, g: 1, b: 0, a: 1}
   noColour: {r: 1, g: 0, b: 0, a: 1}
   OnYesFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
-    InfluenceAmount: 15
+    InfluenceAmount: -10
   OnNoFamilyMemberInfluences:
   - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
-    InfluenceAmount: -20
+    InfluenceAmount: 10
   OnYesPacksToUnlock: []
   OnNoPacksToUnlock: []
-  OnYesDrawDirectFollowOnCard: {fileID: 11400000, guid: 27f9acc673b7a1d41a1c7a903ece6249, type: 2}
+  OnYesDrawDirectFollowOnCard: {fileID: 0}
   OnNoDrawDirectFollowOnCard: {fileID: 0}
   OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
   OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

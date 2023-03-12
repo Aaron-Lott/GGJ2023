@@ -15,3 +15,6 @@ MonoBehaviour:
   isInitiallyUnlocked: 0
   Cards:
   - {fileID: 11400000, guid: 73e7ce60a42fe3a4cbdd39719b6200e3, type: 2}
+  - {fileID: 11400000, guid: e6fae7a5eb1adfc47b0a51392e036c45, type: 2}
+  - {fileID: 11400000, guid: 9ef4e95fb0991634ebe34f6857f45a92, type: 2}
+  - {fileID: 11400000, guid: fab01b7f1a70f4245b53adc1423df3f1, type: 2}

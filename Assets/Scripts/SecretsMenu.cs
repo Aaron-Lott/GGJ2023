@@ -7,6 +7,7 @@ public class SecretsMenu : MonoBehaviour
 {
     public LayoutGroup grid;
     public Secret secretPrefab;
+    public ResetSecretsButton resetSecretsPrefab;
 
     private void Start() 
     {
@@ -17,6 +18,11 @@ public class SecretsMenu : MonoBehaviour
     {
         foreach (Transform child in grid.transform)
         {
+            if (child.TryGetComponent(out ResetSecretsButton resetSecretsButton))
+            {
+                resetSecretsButton.ButtonPress -= PopulateSecrets;
+            }
+
             Destroy(child.gameObject);
         }
 
@@ -32,6 +38,9 @@ public class SecretsMenu : MonoBehaviour
             secret.secretText.text = familyMember.Value.Data.secret;
             secret.SetUnlocked(familyMember.Value.IsSecretUnlocked, familyMember.Value.Data);
         }
+
+        ResetSecretsButton resetSecrets = Instantiate(resetSecretsPrefab, grid.transform);
+        resetSecrets.ButtonPress += PopulateSecrets;
     }
 
     public void ClosePopup()

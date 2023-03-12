@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5949c5fe8c2282642a66ec061d650df7, type: 3}
+  m_Name: UncleWantsToFlyAKiteStoryCard
+  m_EditorClassIdentifier: 
+  FamilyMembersRequired:
+  - {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+  CardDrawAvailabilityTrustRequirements:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    FilterType: 0
+    MinimumTrustRequirement: 15
+    MaximumTrustRequirement: 0
+  sprite: {fileID: 21300000, guid: 70866dab1e96e4e42b38a4725770f18b, type: 3}
+  backgroundColour: {r: 1, g: 1, b: 1, a: 1}
+  description: Uncle wants to fly a kite and asks you to join him!
+  yesText: Agree to join him, grabbing your whellies
+  noText: Give him a "Kites... Seriously?..." look and say you're totally bussy with
+    something
+  hasCustomYesNoColours: 0
+  yesColour: {r: 0, g: 1, b: 0, a: 1}
+  noColour: {r: 1, g: 0, b: 0, a: 1}
+  OnYesFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    InfluenceAmount: 15
+  OnNoFamilyMemberInfluences:
+  - TargetFamilyMember: {fileID: 11400000, guid: 92771c47fc95f4c648ef8b48f23ed977, type: 2}
+    InfluenceAmount: -20
+  OnYesPacksToUnlock: []
+  OnNoPacksToUnlock: []
+  OnYesDrawDirectFollowOnCard: {fileID: 11400000, guid: 27f9acc673b7a1d41a1c7a903ece6249, type: 2}
+  OnNoDrawDirectFollowOnCard: {fileID: 0}
+  OnYesTargetFamilyMemberToUnlockSecret: {fileID: 0}
+  OnNoTargetFamilyMemberToUnlockSecret: {fileID: 0}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c399f22c36e3b8048b814111d9b25810, type: 3}
-  m_Name: GrandaLookingForGrandmaToAskAboutThePoleCardPack
+  m_Name: SummerWorkAtDadsShopCardPack
   m_EditorClassIdentifier: 
   isInitiallyUnlocked: 0
   Cards:
-  - {fileID: 11400000, guid: bde3bd855e2c39e4bbc1d6f1cc96d224, type: 2}
+  - {fileID: 11400000, guid: 1c5b81d8ac367da4e839acdd15d30ab9, type: 2}

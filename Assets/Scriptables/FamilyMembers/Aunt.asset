@@ -15,7 +15,7 @@ MonoBehaviour:
   FamilyMemberName: Karen
   FamilyMemberRelation: Aunt
   Sprite: {fileID: 21300000, guid: c3c72287193214996af4f29c39ba21ef, type: 3}
-  secretSprite: {fileID: 21300000, guid: 7f5077902f34e4dcda6e69df4ced83a7, type: 3}
-  secret: Aunt Karen's secret talent for beatboxing.
   hasSecret: 1
+  secretSprite: {fileID: 21300000, guid: 7f5077902f34e4dcda6e69df4ced83a7, type: 3}
+  secret: Aunt Karen has a secret talent for beatboxing.
   TrustMax: 100

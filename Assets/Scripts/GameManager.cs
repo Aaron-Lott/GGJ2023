@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int minimumStableTrustValue = 15;
+    [SerializeField] private int minimumStableTrustValue = 20;
     [SerializeField] private int minimumUntrustingFamilyMembersToLose = 2;
 
     #region singleton

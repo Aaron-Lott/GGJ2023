@@ -31,11 +31,11 @@ public class FamilyMember
     { 
         get
         {
-            if (Trust < Data.TrustMax * 0.3f)
+            if (Trust < Data.TrustMax * 0.2f)
             {
                 return TrustLevels.Low;
             }
-            else if (Trust < Data.TrustMax * 0.6f)
+            else if (Trust < Data.TrustMax * 0.8f)
             {
                 return TrustLevels.Medium;
             }
